@@ -13,6 +13,7 @@
         "grunt-contrib-concat":         "*",
         "grunt-cssc":                   "*",
         "grunt-htmlhint":               "*",
+        "grunt-contrib-connect":        "*",
         "matchdep":                     "*"
     }
 }

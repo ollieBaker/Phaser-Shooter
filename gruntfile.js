@@ -42,6 +42,12 @@ module.exports = function(grunt){
         },
 
         watch: {
+            options: {
+                livereload: true
+            },
+            html: {
+                files: ['index.html']
+            },
             js: {
                 files: ['js/**/*.js'],
                 tasks: ['buildjs']
@@ -71,11 +77,21 @@ module.exports = function(grunt){
                     'scripts.min.js': ['scripts.min.js']
                 }
             }
+        },
+
+        connect: {
+            server: {
+                options: {
+                    open: true,
+                    livereload: 35729,
+                    hostname:'localhost'
+                }
+            }
         }
 
     });
 
-    grunt.registerTask('default',   []);
+    grunt.registerTask('default',   ['connect', 'watch']);
     grunt.registerTask('buildcss',  ['sass', 'cssc', 'cssmin']);
     grunt.registerTask('buildjs',  ['concat', 'uglify']);
 };
