@@ -7,6 +7,19 @@ module.exports = function(grunt){
 
         pkg: grunt.file.readJSON('package.json'),
 
+        'ftp-deploy': {
+          build: {
+            auth: {
+              host: '213.171.193.5',
+              port: 21,
+              authKey: 'key1'
+            },
+            src: 'deploy',
+            dest: 'htdocs/lab/sg',
+            exclusions: ['deploy/**/.DS_Store', 'deploy/Thumbs.db']
+          }
+        },
+
         cssc: {
             build: {
                 options: {
@@ -94,4 +107,5 @@ module.exports = function(grunt){
     grunt.registerTask('default',   ['connect', 'watch']);
     grunt.registerTask('buildcss',  ['sass', 'cssc', 'cssmin']);
     grunt.registerTask('buildjs',  ['concat', 'uglify']);
+    grunt.registerTask('deploy', 'ftp-deploy')
 };
