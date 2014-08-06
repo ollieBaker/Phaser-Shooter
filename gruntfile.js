@@ -18,7 +18,7 @@ module.exports = function(grunt){
                     consolidateMediaQueries:false
                 },
                 files: {
-                    'style.css': 'style.css'
+                    'deploy/style.css': 'deploy/style.css'
                 }
             }
         },
@@ -36,7 +36,7 @@ module.exports = function(grunt){
                     style: 'compressed'
                 },
                 files: {
-                    'style.css': 'scss/style.scss'
+                    'deploy/style.css': 'scss/style.scss'
                 }
             }
         },
@@ -46,14 +46,14 @@ module.exports = function(grunt){
                 livereload: true
             },
             html: {
-                files: ['index.html']
+                files: ['deploy/index.html']
             },
             js: {
-                files: ['js/**/*.js'],
+                files: ['js/**/*.js', 'deploy/*.js'],
                 tasks: ['buildjs']
             },
             css: {
-                files: ['scss/**/*.scss'],
+                files: ['scss/**/*.scss', 'deploy/*.css'],
                 tasks: ['buildcss']
             }
         },
@@ -67,14 +67,14 @@ module.exports = function(grunt){
                 // the files to concatenate
                 src: ['js/**/*.js'],
                 // the location of the resulting JS file
-                dest: 'scripts.min.js'
+                dest: 'deploy/scripts.min.js'
             }
         },
 
         uglify: {
             build: {
                 files: {
-                    'scripts.min.js': ['scripts.min.js']
+                    'deploy/scripts.min.js': ['deploy/scripts.min.js']
                 }
             }
         },
@@ -82,7 +82,7 @@ module.exports = function(grunt){
         connect: {
             server: {
                 options: {
-                    open: true,
+                    open: 'http://localhost:8000/deploy/',
                     livereload: 35729,
                     hostname:'localhost'
                 }
