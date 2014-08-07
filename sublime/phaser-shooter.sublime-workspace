@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"re",
+				"registerTask"
+			],
+			[
+				"de",
+				"deploy"
+			],
+			[
+				"build",
+				"buildjs"
+			],
+			[
 				"fun",
 				"function"
 			],
@@ -144,21 +156,73 @@
 	"buffers":
 	[
 		{
-			"contents": "	",
-			"file": "sass/style.scss",
-			"file_size": 0,
-			"file_write_time": 1406908394000000,
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/gruntfile.js",
 			"settings":
 			{
-				"buffer_size": 1,
+				"buffer_size": 2897,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "index.html",
+			"contents": "{\n  \"key1\": {\n    \"username\": \"olliebaker.co.uk\",\n    \"password\": \"karatekid123\"\n  },\n  \"key2\": {\n    \"username\": \"username2\",\n    \"password\": \"password2\"\n  }\n}",
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/. ftppass",
+			"file_size": 160,
+			"file_write_time": 1407367685000000,
 			"settings":
 			{
-				"buffer_size": 182,
+				"buffer_size": 160,
+				"line_ending": "Unix",
+				"name": "{"
+			}
+		},
+		{
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Boot.js",
+			"settings":
+			{
+				"buffer_size": 2622,
+				"line_ending": "Unix",
+				"name": "ShooterGame = {"
+			}
+		},
+		{
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Preload.js",
+			"settings":
+			{
+				"buffer_size": 2166,
+				"line_ending": "Unix",
+				"name": "ShooterGame.Preloader = function (game) {"
+			}
+		},
+		{
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Game.js",
+			"settings":
+			{
+				"buffer_size": 1716,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/MainMenu.js",
+			"settings":
+			{
+				"buffer_size": 936,
+				"line_ending": "Unix",
+				"name": "ShooterGame.MainMenu = function (game) {"
+			}
+		},
+		{
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
+			"settings":
+			{
+				"buffer_size": 1150,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
+			"settings":
+			{
+				"buffer_size": 634,
 				"line_ending": "Unix"
 			}
 		}
@@ -283,6 +347,13 @@
 	},
 	"file_history":
 	[
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/scss/style.scss",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/scripts.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/index.html",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/sublime/sass/style.scss",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/sublime/index.html",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/sublime/phaser-shooter.sublime-workspace",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/sublime/phaser-shooter.sublime-project",
 		"/Users/olliebaker/Dev/localSites/olliebaker/wp-content/themes/eddiemachado-bones-542ebd4/library/js/scripts.js",
@@ -351,6 +422,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"BasicGame",
+			"index",
 			"type",
 			"Displaying a Bitmap",
 			"radiantmedia.kanoti.com",
@@ -393,6 +466,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"ShooterGame",
 			"Domino",
 			"wwww.radiantmedia.co.uk",
 			"www.",
@@ -410,28 +484,57 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "sass/style.scss",
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/gruntfile.js",
 					"settings":
 					{
-						"buffer_size": 1,
+						"buffer_size": 2897,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1,
-								1
+								2612,
+								2612
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 869.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/. ftppass",
+					"settings":
+					{
+						"buffer_size": 160,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								79,
+								79
+							]
+						],
+						"settings":
+						{
+							"auto_name": "{",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -440,24 +543,166 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "index.html",
+					"buffer": 2,
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Boot.js",
 					"settings":
 					{
-						"buffer_size": 182,
+						"buffer_size": 2622,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								182,
-								182
+								16,
+								16
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"auto_name": "ShooterGame = {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 494.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Preload.js",
+					"settings":
+					{
+						"buffer_size": 2166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1134,
+								1134
+							]
+						],
+						"settings":
+						{
+							"auto_name": "ShooterGame.Preloader = function (game) {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Game.js",
+					"settings":
+					{
+						"buffer_size": 1716,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11,
+								11
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/MainMenu.js",
+					"settings":
+					{
+						"buffer_size": 936,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								733,
+								733
+							]
+						],
+						"settings":
+						{
+							"auto_name": "ShooterGame.MainMenu = function (game) {",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
+					"settings":
+					{
+						"buffer_size": 1150,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								676,
+								676
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
+					"settings":
+					{
+						"buffer_size": 634,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								218,
+								218
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
