@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>3.4.0</string>
         <key>fileName</key>
-        <string>/Users/olliebaker/Dev/js/Phaser-Shooter/project_files/kenney space sprites.tps</string>
+        <string>/Users/olliebaker/Dev/js/Phaser-Shooter/project_files/kenney space sprites 2.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -28,7 +28,7 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <true/>
+        <false/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -36,7 +36,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>json</string>
+        <string>sparrow</string>
         <key>textureFileName</key>
         <filename>../deploy/assets/image/main.png</filename>
         <key>flipPVR</key>
@@ -131,7 +131,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../deploy/assets/image/main.json</filename>
+                <filename>../deploy/assets/image/main.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -174,8 +174,8 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../../Downloads/SpaceShooterRedux/PNG</filename>
             <filename>../../../../Downloads/SpaceShooterRedux/Backgrounds</filename>
+            <filename>../../../../Downloads/SpaceShooterRedux/PNG</filename>
             <filename>play_btn.png</filename>
         </array>
         <key>ignoreFileList</key>

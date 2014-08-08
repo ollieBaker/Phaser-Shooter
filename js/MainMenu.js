@@ -9,16 +9,23 @@ ShooterGame.MainMenu.prototype = {
 
 	create: function () {
 
+		console.log("main menu");
+
 		//	We've already preloaded our assets, so let's kick right into the Main Menu itself.
 		//	Here all we're doing is playing some music and adding a picture and button
 		//	Naturally I expect you to do something significantly better :)
 
-		this.music = this.add.audio('titleMusic');
-		this.music.play();
+		//this.music = this.add.audio('titleMusic');
+		//this.music.play();
 
-		this.add.sprite(0, 0, 'titlepage');
+		
 
-		this.playButton = this.add.button(400, 600, 'playButton', this.startGame, this, 'buttonOver', 'buttonOut', 'buttonOver');
+		this.playButton = this.add.button(this.game.world.centerX, this.game.world.centerY, 'main', this.startGame, this);
+		this.playButton.anchor.setTo(0.5, 0.5);
+		this.playButton.frameName = 'play_btn';
+
+		//shortcut to game
+
 
 	},
 
@@ -30,12 +37,31 @@ ShooterGame.MainMenu.prototype = {
 
 	startGame: function (pointer) {
 
-		//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
-		this.music.stop();
+		// Launch fullscreen for browsers that support it!
+        //this.launchFullscreen(document.documentElement); // the whole page
 
+		//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
+		//this.music.stop();
+		this.playButton.scale = 0.9
 		//	And start the actual game
 		this.state.start('Game');
 
-	}
+	},
+
+
+    launchFullscreen: function (element) {
+        
+        if(element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if(element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if(element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if(element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+
+        console.log('twat', element);
+    }
 
 };

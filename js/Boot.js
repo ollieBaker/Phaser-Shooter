@@ -19,8 +19,8 @@ ShooterGame.Boot.prototype = {
     preload: function () {
 
         //  Here we load the assets required for our preloader (in this case a background and a loading bar)
-        this.load.image('preloaderBackground', 'images/preloader_background.jpg');
-        this.load.image('preloaderBar', 'images/preloadr_bar.png');
+        //this.load.image('preloaderBackground', 'images/preloader_background.jpg');
+        this.load.image('preloaderBar', 'assets/image/preloader_bar.png');
 
     },
 
@@ -32,28 +32,28 @@ ShooterGame.Boot.prototype = {
         if (this.game.device.desktop)
         {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            this.scale.minWidth = 480;
-            this.scale.minHeight = 260;
-            this.scale.maxWidth = 1024;
-            this.scale.maxHeight = 768;
+            this.scale.minWidth = 640 * 0.5;
+            this.scale.minHeight = 1136 * 0.5;
+            this.scale.maxWidth = 640;
+            this.scale.maxHeight = 1136;
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.setScreenSize(true);
         }
         else
-        {
-            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            this.scale.minWidth = 480;
-            this.scale.minHeight = 260;
-            this.scale.maxWidth = 1024;
-            this.scale.maxHeight = 768;
+        {            
+            this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+            this.scale.minWidth = 640 * 0.5;
+            this.scale.minHeight = 1136 * 0.5;
+            this.scale.maxWidth = 640;
+            this.scale.maxHeight = 1136;
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
-            this.scale.forceOrientation(true, false);
+            this.scale.forceOrientation(false, true);
             this.scale.hasResized.add(this.gameResized, this);
             this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
             this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);
-            this.scale.setScreenSize(true);
+            this.scale.setScreenSize(true); 
         }
 
         this.state.start('Preloader');
