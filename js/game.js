@@ -24,6 +24,7 @@ ShooterGame.Game = function (game) {
 
     var player;
     var weapon;
+    var background;
 };
 
 
@@ -33,6 +34,9 @@ ShooterGame.Game.prototype = {
 	create: function () {
 
         console.log("game");
+
+        background = new ShooterGame.Background(this.game);
+        background.create();
 
         player = new ShooterGame.Player(this.game);
         player.create();

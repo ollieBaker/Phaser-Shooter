@@ -17,17 +17,22 @@ ShooterGame.Player.prototype = {
 	},
 
 	update: function() {
-		this.game.physics.arcade.moveToPointer(this.sprite, 800);
+
+		var deadzone = this.sprite.width/3;
+
+		
 
        if (this.game.input.activePointer.circle.contains(this.sprite.x, this.sprite.y)) {
             this.sprite.body.velocity.x = 0;
             this.sprite.body.velocity.y = 0;
         }
 
-        if(this.game.input.activePointer.x > (this.sprite.x + 25)) {
+        if(this.game.input.activePointer.x > (this.sprite.x + deadzone)) {
             this.sprite.angle = 6;
-        } else if(this.game.input.activePointer.x < (this.sprite.x - 25)) {
+            this.game.physics.arcade.moveToPointer(this.sprite, 800);
+        } else if(this.game.input.activePointer.x < (this.sprite.x - deadzone)) {
             this.sprite.angle = -6;
+            this.game.physics.arcade.moveToPointer(this.sprite, 800);
         }
         else {
             this.sprite.angle = 0;

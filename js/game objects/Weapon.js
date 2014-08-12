@@ -19,7 +19,7 @@ ShooterGame.Weapon.prototype = {
 	fire: function () {
         var bullet = this.bullets.getFirstExists(false);
         if(bullet) {
-	       	bullet.frameName = "Lasers/laserBlue06";
+	       	bullet.frameName = "Lasers/laserBlue06"; // random laser + this.game.rnd.between(1,6);
 	       	bullet.anchor.set(0.5, 0.5);
 	        bullet.exists = true;
 	        bullet.reset(this.player.sprite.x, this.player.sprite.y - 15);
