@@ -155,77 +155,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/gruntfile.js",
-			"settings":
-			{
-				"buffer_size": 2897,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "{\n  \"key1\": {\n    \"username\": \"olliebaker.co.uk\",\n    \"password\": \"karatekid123\"\n  },\n  \"key2\": {\n    \"username\": \"username2\",\n    \"password\": \"password2\"\n  }\n}",
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/. ftppass",
-			"file_size": 160,
-			"file_write_time": 1407367685000000,
-			"settings":
-			{
-				"buffer_size": 160,
-				"line_ending": "Unix",
-				"name": "{"
-			}
-		},
-		{
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Boot.js",
-			"settings":
-			{
-				"buffer_size": 2622,
-				"line_ending": "Unix",
-				"name": "ShooterGame = {"
-			}
-		},
-		{
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Preload.js",
-			"settings":
-			{
-				"buffer_size": 2166,
-				"line_ending": "Unix",
-				"name": "ShooterGame.Preloader = function (game) {"
-			}
-		},
-		{
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Game.js",
-			"settings":
-			{
-				"buffer_size": 1716,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/MainMenu.js",
-			"settings":
-			{
-				"buffer_size": 936,
-				"line_ending": "Unix",
-				"name": "ShooterGame.MainMenu = function (game) {"
-			}
-		},
-		{
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
-			"settings":
-			{
-				"buffer_size": 1150,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
-			"settings":
-			{
-				"buffer_size": 634,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -334,7 +263,10 @@
 	},
 	"console":
 	{
-		"height": 115.0
+		"height": 115.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -347,9 +279,17 @@
 	},
 	"file_history":
 	[
-		"/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
-		"/Users/olliebaker/Dev/js/Phaser-Shooter/scss/style.scss",
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/sublime/phaser-shooter.sublime-workspace",
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/sublime/phaser-shooter.sublime-project",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/. ftppass",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/MainMenu.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/Game.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/Preload.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/Boot.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/gruntfile.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/scss/style.scss",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/scripts.js",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/index.html",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/sublime/sass/style.scss",
@@ -407,7 +347,7 @@
 	],
 	"find":
 	{
-		"height": 33.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -484,238 +424,14 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/gruntfile.js",
-					"settings":
-					{
-						"buffer_size": 2897,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2612,
-								2612
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 869.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/. ftppass",
-					"settings":
-					{
-						"buffer_size": 160,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								79,
-								79
-							]
-						],
-						"settings":
-						{
-							"auto_name": "{",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Boot.js",
-					"settings":
-					{
-						"buffer_size": 2622,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								16,
-								16
-							]
-						],
-						"settings":
-						{
-							"auto_name": "ShooterGame = {",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 494.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Preload.js",
-					"settings":
-					{
-						"buffer_size": 2166,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1134,
-								1134
-							]
-						],
-						"settings":
-						{
-							"auto_name": "ShooterGame.Preloader = function (game) {",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/Game.js",
-					"settings":
-					{
-						"buffer_size": 1716,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								11,
-								11
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/js/MainMenu.js",
-					"settings":
-					{
-						"buffer_size": 936,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								733,
-								733
-							]
-						],
-						"settings":
-						{
-							"auto_name": "ShooterGame.MainMenu = function (game) {",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
-					"settings":
-					{
-						"buffer_size": 1150,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								676,
-								676
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
-					"settings":
-					{
-						"buffer_size": 634,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								218,
-								218
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -748,9 +464,14 @@
 	{
 		"height": 100.0
 	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "phaser-shooter.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -773,10 +494,24 @@
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 243.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }
