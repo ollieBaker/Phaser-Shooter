@@ -17,7 +17,7 @@ ShooterGame.Player.prototype = {
 	},
 
 	update: function() {
-		this.game.physics.arcade.moveToPointer(this.sprite, 400);
+		this.game.physics.arcade.moveToPointer(this.sprite, 800);
 
        if (this.game.input.activePointer.circle.contains(this.sprite.x, this.sprite.y)) {
             this.sprite.body.velocity.x = 0;

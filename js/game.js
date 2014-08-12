@@ -23,7 +23,7 @@ ShooterGame.Game = function (game) {
 
 
     var player;
-    var bullets;
+    var weapon;
 };
 
 
@@ -37,13 +37,13 @@ ShooterGame.Game.prototype = {
         player = new ShooterGame.Player(this.game);
         player.create();
 
-        bullets = new ShooterGame.Bullets(this.game, player);
-        bullets.create();
+        weapon = new ShooterGame.Weapon(this.game, player);
+        weapon.create();
 	},  
 
 	update: function () {
         player.update();
-        bullets.update();
+        weapon.update();
 	},   
 
 	quitGame: function (pointer) {
