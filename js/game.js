@@ -37,40 +37,14 @@ ShooterGame.Game.prototype = {
         player = new ShooterGame.Player(this.game);
         player.create();
 
-        bullets = this.game.add.group();
-        bullets.createMultiple(100, 'main', 0, false);
-        
-        this.game.time.events.loop(200, this.fire, this);
-        
-
-	},
-
-    fire: function () {
-
-        var bullet = bullets.getFirstExists(false);
-
-        if(bullet) {
-            bullet.frameName = "Lasers/laserBlue06";
-            bullet.anchor.set(0.5, 0.5);
-            bullet.exists = true;
-            bullet.reset(player.sprite.x, player.sprite.y - 15);
-            this.game.physics.enable(bullets, Phaser.Physics.ARCADE);
-            bullet.body.allowRotation = false;
-            bullet.body.velocity.y = -400;
-        }
-    },
+        bullets = new ShooterGame.Bullets(this.game, player);
+        bullets.create();
+	},  
 
 	update: function () {
         player.update();
-        bullets.forEachAlive(this.checkBounds, this);
-
-	},
-
-    checkBounds: function (bullet) {
-        if(bullet.y < -10) {
-            bullet.kill();
-        }
-    },
+        bullets.update();
+	},   
 
 	quitGame: function (pointer) {
 
