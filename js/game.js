@@ -48,10 +48,11 @@ ShooterGame.Game.prototype = {
 	update: function () {
         player.update();
         weapon.update();
+        background.update();
 	},   
 
 	quitGame: function (pointer) {
-
+        
 		//	Here you should destroy anything you no longer need.
 		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
