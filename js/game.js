@@ -47,8 +47,6 @@ ShooterGame.Game.prototype = {
 
     fire: function () {
 
-        player.update();
-
         var bullet = bullets.getFirstExists(false);
 
         if(bullet) {

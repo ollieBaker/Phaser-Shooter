@@ -62,11 +62,11 @@ module.exports = function(grunt){
                 files: ['deploy/index.html']
             },
             js: {
-                files: ['js/**/*.js', 'deploy/*.js'],
+                files: ['js/**/*.js'],
                 tasks: ['buildjs']
             },
             css: {
-                files: ['scss/**/*.scss', 'deploy/*.css'],
+                files: ['scss/**/*.scss'],
                 tasks: ['buildcss']
             }
         },
