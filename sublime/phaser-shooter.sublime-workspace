@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"bull",
+				"bullets"
+			],
+			[
 				"re",
 				"registerTask"
 			],
@@ -155,20 +159,86 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/Game.js",
+			"settings":
+			{
+				"buffer_size": 1990,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/game objects/Background.js",
+			"settings":
+			{
+				"buffer_size": 301,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/deploy/assets/image/main.xml",
+			"settings":
+			{
+				"buffer_size": 25281,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "ShooterGame.Weapon = function(game, player) {\n	this.game = game;\n	this.player = player;\n	this.bullets = null;\n};\n\nShooterGame.Weapon.prototype = {\n	preload: function() {\n\n	},\n\n	create: function() {\n		this.bullets = this.game.add.group();\n        this.bullets.createMultiple(100, 'main', 0, false);\n\n        this.game.time.events.loop(100, this.fire, this);\n	},\n\n	fire: function () {\n        var bullet = this.bullets.getFirstExists(false);\n        if(bullet) {\n	       	bullet.frameName = \"Lasers/laserBlue06\"; // random laser + this.game.rnd.between(1,6);\n	       	bullet.anchor.set(0.5, 0.5);\n	        bullet.exists = true;\n	        bullet.reset(this.player.sprite.x, this.player.sprite.y - 15);\n	        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);\n	        bullet.body.allowRotation = false;\n	        bullet.body.velocity.y = -400;\n	    }\n    },\n\n	update: function() {\n		this.bullets.forEachAlive(this.checkBounds, this);\n	},\n\n	checkBounds: function (bullet) {\n        if(bullet.y < -10) {\n            bullet.kill();\n        }\n    }\n	\n};",
+			"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/Weapon.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1059,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/MainMenu.js",
+			"settings":
+			{
+				"buffer_size": 1679,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 2895,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "ShooterGame.Player = function (game) {\n	this.game = game;\n    this.sprite = null;\n};\n\nShooterGame.Player.prototype = {\n	preload: function() {\n\n	},\n\n	create: function() {\n		this.sprite = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'main');\n        this.sprite.anchor.setTo(0.5,0.5);\n        this.sprite.frameName = \"playerShip2_red\";\n        this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);\n        this.sprite.body.allowRotation = false;		\n	},\n\n	update: function() {\n\n		var deadzone = this.sprite.width/3;\n\n		\n\n       if (this.game.input.activePointer.circle.contains(this.sprite.x, this.sprite.y)) {\n            this.sprite.body.velocity.x = 0;\n            this.sprite.body.velocity.y = 0;\n        }\n\n        if(this.game.input.activePointer.x > (this.sprite.x + deadzone)) {\n            this.sprite.angle = 6;\n            this.game.physics.arcade.moveToPointer(this.sprite, 800);\n        } else if(this.game.input.activePointer.x < (this.sprite.x - deadzone)) {\n            this.sprite.angle = -6;\n            this.game.physics.arcade.moveToPointer(this.sprite, 800);\n        }\n        else {\n            this.sprite.angle = 0;\n        }\n	} \n};",
+			"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/Player.js",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1186,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 87.0,
+		"height": 375.0,
 		"selected_items":
 		[
 			[
-				"install",
+				"pack",
 				"Package Control: Install Package"
 			],
 			[
-				"pack",
-				"Package Control: Discover Packages"
+				"control",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
 			],
 			[
 				"pac",
@@ -259,13 +329,14 @@
 				"Package Control: Discover Packages"
 			]
 		],
-		"width": 593.0
+		"width": 416.0
 	},
 	"console":
 	{
 		"height": 115.0,
 		"history":
 		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
 		]
 	},
 	"distraction_free":
@@ -279,8 +350,11 @@
 	},
 	"file_history":
 	[
-		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/sublime/phaser-shooter.sublime-workspace",
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/Background.js",
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/deploy/assets/image/main.json",
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/gruntfile.js",
 		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/sublime/phaser-shooter.sublime-project",
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/sublime/phaser-shooter.sublime-workspace",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/. ftppass",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
@@ -347,11 +421,11 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 90.0,
 		"where_history":
 		[
 			""
@@ -362,6 +436,21 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"blue",
+			"darkp",
+			"sprite",
+			"background",
+			"backgr",
+			"cockpitBlue",
+			"cock",
+			"background",
+			"back",
+			"this.group",
+			"angleToPointer",
+			"sprite",
+			"this.sprite",
+			"fullsc",
+			"player",
 			"BasicGame",
 			"index",
 			"type",
@@ -400,12 +489,16 @@
 			"<img src=\"images/mouse.jpeg\">",
 			"javascript"
 		],
-		"highlight": true,
+		"highlight": false,
 		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
 		[
+			"tileSprite",
+			"this.bullets",
+			"this.sprite",
+			"sprite",
 			"ShooterGame",
 			"Domino",
 			"wwww.radiantmedia.co.uk",
@@ -415,17 +508,220 @@
 			"<img src=\"http://lorempixel.com/400/400\" />",
 			"<img src=\"http://lorempixel.com/400/200\" />"
 		],
-		"reverse": true,
-		"show_context": true,
+		"reverse": false,
+		"show_context": false,
 		"use_buffer2": true,
-		"whole_word": true,
+		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/Game.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1726,
+								1726
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/game objects/Background.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 301,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								295,
+								295
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/deploy/assets/image/main.xml",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 25281,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24993,
+								25000
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4125.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/Weapon.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1059,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								112,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 119.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/MainMenu.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1679,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								126,
+								126
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/gruntfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1730,
+								1730
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 705.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/js/Player.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1186,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								357
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 5.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -471,7 +767,7 @@
 	"project": "phaser-shooter.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 62.0
 	},
 	"save_all_on_build": true,
 	"select_file":
