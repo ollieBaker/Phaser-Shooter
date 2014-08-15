@@ -54,6 +54,10 @@ ShooterGame.Game.prototype = {
         weapon.update();
         enemy.update();
         background.update();
+
+        //check for enemy / weapon / player collisions
+
+
 	},   
 
 	quitGame: function (pointer) {

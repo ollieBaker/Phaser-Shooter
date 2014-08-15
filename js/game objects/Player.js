@@ -1,6 +1,7 @@
 ShooterGame.Player = function (game) {
 	this.game = game;
     this.sprite = null;
+    this.lives = 3;
 };
 
 ShooterGame.Player.prototype = {
@@ -15,6 +16,14 @@ ShooterGame.Player.prototype = {
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         this.sprite.body.allowRotation = false;		
 	},
+
+    loseLife: function() {
+        this.lives -= 1;
+        if(this.lives < 0) {
+            //die
+            console.log('you dead...');
+        }
+    },
 
 	update: function() {
 

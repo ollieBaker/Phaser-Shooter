@@ -4,6 +4,7 @@ ShooterGame.Enemy = function(game) {
 	this.Yspeed = 2;
 	this.Xspeed = 0.04;
 	this.count = 0;
+	this.health = 5;
 };
 
 ShooterGame.Enemy.prototype = {
@@ -19,6 +20,19 @@ ShooterGame.Enemy.prototype = {
         this.sprite.body.allowRotation = false;		
 	},
 
+	loseHealth: function( power ) {
+		health -= power;
+		if(health <= 0) {
+			//die
+			this.reset();
+		}
+	},
+
+	reset: function () {
+		this.sprite.y = -60;
+		this.health = 5;
+	},
+
 	update: function() {
 
 		this.sprite.x = this.game.world.width*0.5 + ( Math.sin(this.count) * (this.game.world.width * 0.5) );		
@@ -26,7 +40,7 @@ ShooterGame.Enemy.prototype = {
 		this.count += this.Xspeed;
 
 		if(this.sprite.y > this.game.height + this.sprite.height * 0.5) {
-			this.sprite.y = -60;
+			this.reset();
 		}
 	}
 };
