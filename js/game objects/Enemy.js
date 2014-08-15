@@ -1,46 +1,44 @@
 ShooterGame.Enemy = function(game) {
-	this.game = game;
+
+	Phaser.Sprite.call(this, game, game.world.centerX, -60, 'main');
+	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
+    this.anchor.setTo(0.5,0.5);
+    this.frameName = "Enemies/enemyGreen5";
+    this.game.physics.enable(this, Phaser.Physics.ARCADE);
+    this.body.allowRotation = false;
 	this.sprite = null;
 	this.Yspeed = 2;
 	this.Xspeed = 0.04;
 	this.count = 0;
 	this.health = 5;
+
+	game.add.existing(this);
+
 };
+ShooterGame.Enemy.prototype = Object.create(Phaser.Sprite.prototype);
+ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 
-ShooterGame.Enemy.prototype = {
-	preload: function() {
-
-	},
-
-	create: function() {
-		this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
-        this.sprite.anchor.setTo(0.5,0.5);
-        this.sprite.frameName = "Enemies/enemyGreen5";
-        this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
-        this.sprite.body.allowRotation = false;		
-	},
-
-	loseHealth: function( power ) {
-		health -= power;
-		if(health <= 0) {
+	ShooterGame.Enemy.prototype.loseHealth =  function( power ) {
+		this.health -= power;
+		if(this.health <= 0) {
 			//die
+			console.log('enemy dead');
 			this.reset();
 		}
-	},
+	};
 
-	reset: function () {
-		this.sprite.y = -60;
+	ShooterGame.Enemy.prototype.reset = function () {
+		this.y = -60;
 		this.health = 5;
-	},
+	};
 
-	update: function() {
+	ShooterGame.Enemy.prototype.update = function() {
 
-		this.sprite.x = this.game.world.width*0.5 + ( Math.sin(this.count) * (this.game.world.width * 0.5) );		
-		this.sprite.y += this.Yspeed;
+		this.x = this.game.world.width*0.5 + ( Math.sin(this.count) * (this.game.world.width * 0.5) );		
+		this.y += this.Yspeed;
 		this.count += this.Xspeed;
 
-		if(this.sprite.y > this.game.height + this.sprite.height * 0.5) {
+		if(this.y > this.game.height + this.height * 0.5) {
 			this.reset();
 		}
-	}
-};
+	};

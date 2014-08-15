@@ -2,6 +2,7 @@ ShooterGame.Weapon = function(game, player) {
 	this.game = game;
 	this.player = player;
 	this.bullets = null;
+	this.strength = 1;
 };
 
 ShooterGame.Weapon.prototype = {
