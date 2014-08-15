@@ -23,6 +23,7 @@ ShooterGame.Game = function (game) {
 
 
     var player;
+    var enemy;
     var weapon;
     var background;
 };
@@ -41,6 +42,9 @@ ShooterGame.Game.prototype = {
         player = new ShooterGame.Player(this.game);
         player.create();
 
+        enemy = new ShooterGame.Enemy(this.game);
+        enemy.create();
+
         weapon = new ShooterGame.Weapon(this.game, player);
         weapon.create();
 	},  
@@ -48,6 +52,7 @@ ShooterGame.Game.prototype = {
 	update: function () {
         player.update();
         weapon.update();
+        enemy.update();
         background.update();
 	},   
 
