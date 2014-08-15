@@ -23,7 +23,8 @@ ShooterGame.Game = function (game) {
 
 
     var player;
-    var bullets;
+    var weapon;
+    var background;
 };
 
 
@@ -34,66 +35,24 @@ ShooterGame.Game.prototype = {
 
         console.log("game");
 
-        player = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'main');
-        player.anchor.setTo(0.5,0.5);
-        player.frameName = "playerShip2_red";
-        this.game.physics.enable(player, Phaser.Physics.ARCADE);
-        player.body.allowRotation = false;
+        background = new ShooterGame.Background(this.game);
+        background.create();
 
-        bullets = this.game.add.group();
-        bullets.createMultiple(100, 'main', 0, false);
-        
-        this.game.time.events.loop(200, this.fire, this);
-        
+        player = new ShooterGame.Player(this.game);
+        player.create();
 
-	},
-
-    fire: function () {
-
-        var bullet = bullets.getFirstExists(false);
-
-        if(bullet) {
-            bullet.frameName = "Lasers/laserBlue06";
-            bullet.anchor.set(0.5, 0.5);
-            bullet.exists = true;
-            bullet.reset(player.x, player.y - 15);
-            this.game.physics.enable(bullets, Phaser.Physics.ARCADE);
-            bullet.body.allowRotation = false;
-            bullet.body.velocity.y = -400;
-        }
-    },
+        weapon = new ShooterGame.Weapon(this.game, player);
+        weapon.create();
+	},  
 
 	update: function () {
-
-        //  400 is the speed it will move towards the mouse
-        this.game.physics.arcade.moveToPointer(player, 400);
-
-       if (this.input.activePointer.circle.contains(player.x, player.y)) {
-            player.body.velocity.x = 0;
-            player.body.velocity.y = 0;
-        }
-
-        if(this.input.activePointer.x > (player.x+ 25)) {
-            player.angle = 6;
-        } else if(this.input.activePointer.x < (player.x - 25)) {
-            player.angle = -6;
-        }
-        else {
-            player.angle = 0;
-        }
-
-        bullets.forEachAlive(this.checkBounds, this);
-
-	},
-
-    checkBounds: function (bullet) {
-        if(bullet.y < -10) {
-            bullet.kill();
-        }
-    },
+        player.update();
+        weapon.update();
+        background.update();
+	},   
 
 	quitGame: function (pointer) {
-
+        
 		//	Here you should destroy anything you no longer need.
 		//	Stop music, delete sprites, purge caches, free resources, all that good stuff.
 
@@ -103,7 +62,6 @@ ShooterGame.Game.prototype = {
 	},
 
     render: function () {
-        this.game.debug.spriteInfo(player, 32, 32);
     }
 
 };

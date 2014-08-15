@@ -61,7 +61,7 @@ ShooterGame.MainMenu.prototype = {
             element.msRequestFullscreen();
         }
 
-        console.log('twat', element);
+        console.log('fullscreen', element);
     }
 
 };

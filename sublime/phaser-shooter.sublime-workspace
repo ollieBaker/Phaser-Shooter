@@ -183,6 +183,7 @@
 	},
 	"buffers":
 	[
+<<<<<<< HEAD
 		{
 			"file": "/Users/olliebaker/Dev/js/Phaser-Shooter/gruntfile.js",
 			"settings":
@@ -234,6 +235,8 @@
 				"line_ending": "Unix"
 			}
 		}
+=======
+>>>>>>> FETCH_HEAD
 	],
 	"build_system": "",
 	"command_palette":
@@ -342,7 +345,10 @@
 	},
 	"console":
 	{
-		"height": 115.0
+		"height": 115.0,
+		"history":
+		[
+		]
 	},
 	"distraction_free":
 	{
@@ -355,11 +361,21 @@
 	},
 	"file_history":
 	[
+<<<<<<< HEAD
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/assets/image/main.xml",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/assets/image/main.json",
+=======
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/sublime/phaser-shooter.sublime-workspace",
+		"/C/Users/Ollie/Documents/GitHub/Phaser-Shooter/sublime/phaser-shooter.sublime-project",
+>>>>>>> FETCH_HEAD
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/. ftppass",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/package.json",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/deploy/index.html",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/MainMenu.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/Game.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/Preload.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/Boot.js",
+		"/Users/olliebaker/Dev/js/Phaser-Shooter/gruntfile.js",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/scss/style.scss",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/js/scripts.js",
 		"/Users/olliebaker/Dev/js/Phaser-Shooter/index.html",
@@ -418,7 +434,7 @@
 	],
 	"find":
 	{
-		"height": 33.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -507,6 +523,7 @@
 	"groups":
 	[
 		{
+<<<<<<< HEAD
 			"selected": 3,
 			"sheets":
 			[
@@ -678,12 +695,16 @@
 					},
 					"type": "text"
 				}
+=======
+			"sheets":
+			[
+>>>>>>> FETCH_HEAD
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 34.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -716,9 +737,14 @@
 	{
 		"height": 100.0
 	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "phaser-shooter.sublime-project",
 	"replace":
 	{
-		"height": 64.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -741,10 +767,24 @@
 		],
 		"width": 380.0
 	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
 	"show_minimap": true,
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 243.0,
-	"status_bar_visible": true
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
 }

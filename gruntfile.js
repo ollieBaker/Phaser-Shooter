@@ -62,11 +62,11 @@ module.exports = function(grunt){
                 files: ['deploy/index.html']
             },
             js: {
-                files: ['js/**/*.js', 'deploy/*.js'],
+                files: ['js/**/*.js'],
                 tasks: ['buildjs']
             },
             css: {
-                files: ['scss/**/*.scss', 'deploy/*.css'],
+                files: ['scss/**/*.scss'],
                 tasks: ['buildcss']
             }
         },
@@ -106,6 +106,6 @@ module.exports = function(grunt){
 
     grunt.registerTask('default',   ['connect', 'watch']);
     grunt.registerTask('buildcss',  ['sass', 'cssc', 'cssmin']);
-    grunt.registerTask('buildjs',  ['concat', 'uglify']);
+    grunt.registerTask('buildjs',  ['concat']);//removed 'uglify' for easier debugging
     grunt.registerTask('deploy', 'ftp-deploy')
 };
