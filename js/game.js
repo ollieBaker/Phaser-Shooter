@@ -39,16 +39,17 @@ ShooterGame.Game.prototype = {
         background = new ShooterGame.Background(this.game);
         background.create();
 
-        player = new ShooterGame.Player(this.game);
-        player.create();
-
         enemies = this.game.add.group();
         for (var i = 0; i < 10; i++) {
             enemies.add(new ShooterGame.Enemy(this.game, i) );
         };
 
+        player = new ShooterGame.Player(this.game);
+
         weapon = new ShooterGame.Weapon(this.game, player);
         weapon.create();
+
+        player.create();
 	},  
 
 	update: function () {
