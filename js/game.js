@@ -42,8 +42,10 @@ ShooterGame.Game.prototype = {
         player = new ShooterGame.Player(this.game);
         player.create();
 
-        enemy = new ShooterGame.Enemy(this.game);
-        //enemy.create();
+        enemies = this.game.add.group();
+        for (var i = 0; i < 10; i++) {
+            enemies.add(new ShooterGame.Enemy(this.game, i) );
+        };
 
         weapon = new ShooterGame.Weapon(this.game, player);
         weapon.create();
@@ -55,12 +57,11 @@ ShooterGame.Game.prototype = {
         background.update();
 
         //check for enemy / weapon / player collisions
-        this.game.physics.arcade.overlap(weapon.bullets, enemy, this.onBulletEnemyCollision, null, this);
+        this.game.physics.arcade.overlap(weapon.bullets, enemies, this.onBulletEnemyCollision, null, this);
 
 	}, 
 
-    onBulletEnemyCollision: function (enemy, bullet) {
-        console.log('hit', enemy);
+    onBulletEnemyCollision: function (bullet, enemy) {
         enemy.loseHealth(weapon.strength);
         bullet.kill();
     },

@@ -1,4 +1,4 @@
-ShooterGame.Enemy = function(game) {
+ShooterGame.Enemy = function(game, delay) {
 
 	Phaser.Sprite.call(this, game, 0, 0, 'main');
 	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
@@ -9,7 +9,7 @@ ShooterGame.Enemy = function(game) {
 	this.sprite = null;
 	this.Yspeed = 200;
 	this.Xspeed = 0.045;
-	
+	this.delay = delay;
 	this.reset();
 
 	game.add.existing(this);
@@ -21,7 +21,6 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 	ShooterGame.Enemy.prototype.loseHealth =  function( power ) {
 		this.health -= power;
 		if(this.health <= 0) {
-			console.log('enemy dead');
 			this.reset();
 		}
 	};
@@ -30,7 +29,8 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.body.velocity.x = 0;
 		this.body.velocity.y = 0;
 		this.x = this.width * 0.5;;
-		this.y = -60;
+		this.y = -120 * (this.delay + 1);
+		console.log(this.y);
 		this.count = 0;
 		this.health = 10;
 	};
