@@ -1,6 +1,6 @@
 ShooterGame.Enemy = function(game, delay) {
 
-	Phaser.Sprite.call(this, game, 0, 0, 'main');
+	Phaser.Sprite.call(this, game, 0, -60, 'main');
 	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
     this.anchor.setTo(0.5,0.5);
     this.frameName = "Enemies/enemyGreen5";
@@ -10,7 +10,10 @@ ShooterGame.Enemy = function(game, delay) {
 	this.Yspeed = 200;
 	this.Xspeed = 0.045;
 	this.delay = delay;
-	this.reset();
+
+	this.isAlive = false;
+
+	this.game.time.events.add(Phaser.Timer.SECOND * delay, this.reset, this);
 
 	game.add.existing(this);
 
@@ -26,16 +29,20 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 	};
 
 	ShooterGame.Enemy.prototype.reset = function () {
+		this.isAlive = true;
 		this.body.velocity.x = 0;
 		this.body.velocity.y = 0;
-		this.x = this.width * 0.5;;
-		this.y = -120 * (this.delay + 1);
-		console.log(this.y);
+		this.x = this.width * 0.5;
+		this.y = -120;
 		this.count = 0;
-		this.health = 10;
+		this.health = 2;
 	};
 
 	ShooterGame.Enemy.prototype.update = function() {
+		
+		if(!this.isAlive) {
+			return;
+		}
 
 		this.body.velocity.x = (Math.sin(this.count) * (this.game.world.width + this.width)) * ((1/60) / this.game.time.physicsElapsed);
 		//console.log( (1/60) / this.game.time.physicsElapsed, this.game.time.physicsElapsed);	
