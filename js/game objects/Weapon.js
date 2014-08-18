@@ -14,7 +14,7 @@ ShooterGame.Weapon.prototype = {
 		this.bullets = this.game.add.group();
         this.bullets.createMultiple(100, 'main', 0, false);
 
-        this.game.time.events.loop(100, this.fire, this);
+        this.game.time.events.loop(1000, this.fire, this);
 	},
 
 	fire: function () {

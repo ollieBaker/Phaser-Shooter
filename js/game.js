@@ -23,7 +23,7 @@ ShooterGame.Game = function (game) {
 
 
     var player;
-    var enemy;
+    var enemies;
     var weapon;
     var background;
 };
@@ -52,7 +52,6 @@ ShooterGame.Game.prototype = {
 	update: function () {
         player.update();
         weapon.update();
-        enemy.update();
         background.update();
 
         //check for enemy / weapon / player collisions
@@ -60,9 +59,10 @@ ShooterGame.Game.prototype = {
 
 	}, 
 
-    onBulletEnemyCollision: function (bullet, enemy) {
+    onBulletEnemyCollision: function (enemy, bullet) {
         console.log('hit', enemy);
         enemy.loseHealth(weapon.strength);
+        bullet.kill();
     },
 
 	quitGame: function (pointer) {
