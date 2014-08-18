@@ -2,4 +2,4 @@
 node_modules/
 .sass-cache/
 .ftppass
-.sublime-workspace
+*.sublime-workspace
