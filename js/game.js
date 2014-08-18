@@ -58,12 +58,17 @@ ShooterGame.Game.prototype = {
 
         //check for enemy / weapon / player collisions
         this.game.physics.arcade.overlap(weapon.bullets, enemies, this.onBulletEnemyCollision, null, this);
+        this.game.physics.arcade.overlap(player.sprite, enemies, this.onPlayerEnemyCollision, null, this);
 
 	}, 
 
     onBulletEnemyCollision: function (bullet, enemy) {
         enemy.loseHealth(weapon.strength);
         bullet.kill();
+    },
+
+    onPlayerEnemyCollision: function (player, enemy) {
+        enemy.reset();
     },
 
 	quitGame: function (pointer) {

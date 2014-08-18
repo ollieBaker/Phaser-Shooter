@@ -27,7 +27,7 @@ ShooterGame.Player.prototype = {
 
 	update: function() {
 
-		var deadzone = this.sprite.width/3;
+		var deadzone = 10;
 
 		
 
