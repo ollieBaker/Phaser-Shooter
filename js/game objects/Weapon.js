@@ -27,6 +27,8 @@ ShooterGame.Weapon.prototype = {
 	        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
 	        bullet.body.allowRotation = false;
 	        bullet.body.velocity.y = -400;
+	        bullet.body.width = 10;
+	        bullet.body.height = 30;
 	    }
     },
 
@@ -38,6 +40,8 @@ ShooterGame.Weapon.prototype = {
         if(bullet.y < -10) {
             bullet.kill();
         }
-    }
+    },
+
+
 	
 };

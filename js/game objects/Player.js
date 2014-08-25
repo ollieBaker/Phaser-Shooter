@@ -23,6 +23,8 @@ ShooterGame.Player.prototype = {
         this.sprite.frameName = "playerShip2_red";
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         this.sprite.body.allowRotation = false;	
+        this.sprite.body.width = this.sprite.body.width * 0.75;
+        this.sprite.body.height = this.sprite.body.height * 0.5;
         this.lastPos.x = this.game.world.centerX;
         this.lastPos.y = this.game.world.centerY;	
         this.sprite.body.collideWorldBounds = true;
