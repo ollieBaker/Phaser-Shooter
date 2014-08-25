@@ -3,6 +3,7 @@ ShooterGame.Weapon = function(game, player) {
 	this.player = player;
 	this.bullets = null;
 	this.strength = 1;
+	this.fireTimer;
 };
 
 ShooterGame.Weapon.prototype = {
@@ -14,7 +15,7 @@ ShooterGame.Weapon.prototype = {
 		this.bullets = this.game.add.group();
         this.bullets.createMultiple(100, 'main', 0, false);
 
-        this.game.time.events.loop(250, this.fire, this);
+        this.fireTimer = this.game.time.events.loop(250, this.fire, this);
 	},
 
 	fire: function () {
@@ -30,6 +31,10 @@ ShooterGame.Weapon.prototype = {
 	        bullet.body.width = 10;
 	        bullet.body.height = 30;
 	    }
+    },
+
+    kill: function () {
+    	this.game.time.events.remove(this.fireTimer);
     },
 
 	update: function() {

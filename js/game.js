@@ -91,6 +91,19 @@ ShooterGame.Game.prototype = {
 
     onPlayerEnemyCollision: function (player, enemy) {
         enemy.reset();
+        this.loseLife();
+    },
+
+    loseLife: function () {
+        var live = this.lives.getFirstAlive();
+
+        if (live) {
+            live.kill();
+        } else {
+            this.player.sprite.kill();
+            this.weapon.kill();
+            this.enemies.callAll('kill');
+        }
     },
 
     addScore: function () {
