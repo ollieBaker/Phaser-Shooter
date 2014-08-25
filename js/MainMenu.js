@@ -1,5 +1,6 @@
 ShooterGame.MainMenu = function (game) {
 
+	this.game = game;
 	this.music = null;
 	this.playButton = null;
 
@@ -46,22 +47,10 @@ ShooterGame.MainMenu.prototype = {
 		//	And start the actual game
 		this.state.start('Game');
 
-	},
-
-
-    launchFullscreen: function (element) {
-        
-        if(element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if(element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-        } else if(element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
-        } else if(element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-        }
-
-        console.log('fullscreen', element);
-    }
+		var device  = new Phaser.Device();
+		if(device.desktop == false) {
+			this.game.scale.startFullScreen();
+		}
+	}
 
 };

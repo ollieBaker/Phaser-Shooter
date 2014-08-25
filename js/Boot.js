@@ -42,7 +42,7 @@ ShooterGame.Boot.prototype = {
         }
         else
         {            
-            this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+            this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;//change??
             this.scale.minWidth = 1136 * 0.5;
             this.scale.minHeight = 640 * 0.5;
             this.scale.maxWidth = 1136;

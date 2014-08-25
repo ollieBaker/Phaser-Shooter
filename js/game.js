@@ -21,6 +21,7 @@ ShooterGame.Game = function (game) {
     //	You can use any of these from any function within this State.
     //	But do consider them as being 'reserved words', i.e. don't create a property for your own game called "world" or you'll over-write the world reference.
 
+    this.device;
 
     this.player;
     this.enemies;
@@ -42,6 +43,8 @@ ShooterGame.Game.prototype = {
 	create: function () {
 
         console.log("game");
+
+        this.device  = new Phaser.Device();
 
         this.background = new ShooterGame.Background(this.game);
         this.background.create();
@@ -144,11 +147,15 @@ ShooterGame.Game.prototype = {
 	},
 
     render: function () {
-        this.game.debug.body(this.player.sprite);
+        if(this.device.desktop == true) {
+            this.game.scale.startFullScreen();
+        
+            this.game.debug.body(this.player.sprite);
 
-        this.weapon.bullets.forEachAlive( function (bullet) {
-            this.game.debug.body(bullet);
-        }, this);
+            this.weapon.bullets.forEachAlive( function (bullet) {
+                this.game.debug.body(bullet);
+            }, this);
+        }
     }
 
 };
