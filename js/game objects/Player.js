@@ -20,11 +20,12 @@ ShooterGame.Player.prototype = {
 	create: function() {
 		this.sprite = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'main');
         this.sprite.anchor.setTo(0.5,0.5);
+        this.sprite.angle = 90;
         this.sprite.frameName = "playerShip2_red";
         this.game.physics.enable(this.sprite, Phaser.Physics.ARCADE);
         this.sprite.body.allowRotation = false;	
         this.sprite.body.width = this.sprite.body.width * 0.75;
-        this.sprite.body.height = this.sprite.body.height * 0.5;
+        this.sprite.body.height = this.sprite.body.height * 0.75;
         this.lastPos.x = this.game.world.centerX;
         this.lastPos.y = this.game.world.centerY;	
         this.sprite.body.collideWorldBounds = true;

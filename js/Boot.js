@@ -32,10 +32,10 @@ ShooterGame.Boot.prototype = {
         if (this.game.device.desktop)
         {
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-            this.scale.minWidth = 640 * 0.5;
-            this.scale.minHeight = 1136 * 0.5;
-            this.scale.maxWidth = 640;
-            this.scale.maxHeight = 1136;
+            this.scale.minWidth = 1136 * 0.5;
+            this.scale.minHeight = 640 * 0.5;
+            this.scale.maxWidth = 1136;
+            this.scale.maxHeight = 640;
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.setScreenSize(true);
@@ -43,10 +43,10 @@ ShooterGame.Boot.prototype = {
         else
         {            
             this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
-            this.scale.minWidth = 640 * 0.5;
-            this.scale.minHeight = 1136 * 0.5;
-            this.scale.maxWidth = 640;
-            this.scale.maxHeight = 1136;
+            this.scale.minWidth = 1136 * 0.5;
+            this.scale.minHeight = 640 * 0.5;
+            this.scale.maxWidth = 1136;
+            this.scale.maxHeight = 640;
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.forceOrientation(false, true);

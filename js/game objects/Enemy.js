@@ -7,8 +7,8 @@ ShooterGame.Enemy = function(game, delay) {
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.allowRotation = false;
 	this.sprite = null;
-	this.Yspeed = 200;
-	this.Xspeed = 0.045;
+	this.Yspeed = 0.045;
+	this.Xspeed = -200;
 	this.delay = delay;
 
 	this.isAlive = false;
@@ -16,6 +16,8 @@ ShooterGame.Enemy = function(game, delay) {
 	this.game.time.events.add(Phaser.Timer.SECOND * delay, this.reset, this);
 
 	game.add.existing(this);
+
+	this.angle = 90;
 
 };
 ShooterGame.Enemy.prototype = Object.create(Phaser.Sprite.prototype);
@@ -46,8 +48,8 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.alpha = 1;
 		this.body.velocity.x = 0;
 		this.body.velocity.y = 0;
-		this.x = this.width * 0.5;
-		this.y = -120;
+		this.x = this.game.world.width + 40;
+		this.y = -40;
 		this.count = 0;
 		this.health = 3;
 	};
@@ -58,11 +60,11 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 			return;
 		}
 
-		this.body.velocity.x = (Math.sin(this.count) * (this.game.world.width + this.width)) * ((1/60) / this.game.time.physicsElapsed);
+		this.body.velocity.y = (Math.sin(this.count) * (this.game.world.height + (this.height * 2) )) * ((1/60) / this.game.time.physicsElapsed);
 		//console.log( (1/60) / this.game.time.physicsElapsed, this.game.time.physicsElapsed);	
-		this.body.velocity.y = this.Yspeed;
-		this.count += this.Xspeed;
-		if(this.y > this.game.height + this.height * 0.5) {
+		this.body.velocity.x = this.Xspeed;
+		this.count += this.Yspeed;
+		if(this.x < 0 - this.height * 0.5) {
 			this.reset();
 		}
 

@@ -5,11 +5,11 @@ ShooterGame.Background = function(game) {
 
 ShooterGame.Background.prototype = {
 	create: function() {
-		this.tileSprite = this.game.add.tileSprite(0, 0, 640, 1136, 'main', 'Backgrounds/darkPurple');
+		this.tileSprite = this.game.add.tileSprite(0, 0, 1136, 640, 'main', 'Backgrounds/darkPurple');
 
 	},
 
 	update: function() {
-		this.tileSprite.tilePosition.y += 6;
+		this.tileSprite.tilePosition.x -= 6;
 	}
 };
