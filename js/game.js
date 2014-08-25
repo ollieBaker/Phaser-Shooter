@@ -26,8 +26,11 @@ ShooterGame.Game = function (game) {
     this.enemies;
     this.weapon;
     this.background;
+
     this.score = 0;
     this.scoreText;
+
+    this.lives;
 };
 
 
@@ -42,6 +45,17 @@ ShooterGame.Game.prototype = {
         this.background.create();
 
         this.scoreText = this.game.add.text(16, 16, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+
+        this.lives = this.game.add.group();
+        this.game.add.text(this.game.world.width - 110, 16, 'Lives : ', { font: '20px Arial', fill: '#fff' });
+
+        for (var i = 0; i < 3; i++) {
+            var ship = this.lives.create(this.game.world.width - 100 + (40 * i), 60, 'main');
+            ship.frameName = 'UI/playerLife1_red';
+            ship.anchor.setTo(0.5, 0.5);
+            ship.angle = 90;
+            ship.alpha = 0.4;
+        }
 
         var numEnemies = 10 ;
         this.enemies = this.game.add.group();
