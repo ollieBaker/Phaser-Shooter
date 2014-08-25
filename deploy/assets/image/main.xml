@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
-<!-- $TexturePacker:SmartUpdate:f1902d60ab0fcc3e7aba8f47488ce70c:9337a3a76c820523fe52d259c930bf60:f7afabebcd35587b8270ff90b311ebd0$ -->
+<!-- $TexturePacker:SmartUpdate:7c31133dbc9fa4f56dbe8ff333b7eb60:4cc5cf34d7e6dae448b39f0be5312f07:f7afabebcd35587b8270ff90b311ebd0$ -->
 <TextureAtlas imagePath="main.png">
     <SubTexture name="Backgrounds/black" x="260" y="1626" width="256" height="256"/>
     <SubTexture name="Backgrounds/blackSmall" x="2" y="1229" width="128" height="128"/>
     <SubTexture name="Backgrounds/blue" x="2" y="1626" width="256" height="256"/>
     <SubTexture name="Backgrounds/blueSmall" x="132" y="1229" width="128" height="128"/>
-    <SubTexture name="Backgrounds/darkPurple" x="518" y="1626" width="256" height="256"/>
+    <SubTexture name="Backgrounds/darkPurple" x="518" y="1626" width="255" height="256"/>
     <SubTexture name="Backgrounds/darkPurpleRect" x="635" y="1099" width="97" height="128"/>
     <SubTexture name="Backgrounds/darkPurpleSmall" x="262" y="1229" width="128" height="128"/>
     <SubTexture name="Backgrounds/purple" x="518" y="1368" width="256" height="256"/>
