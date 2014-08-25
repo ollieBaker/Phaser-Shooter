@@ -49,7 +49,7 @@ ShooterGame.Boot.prototype = {
             this.scale.maxHeight = 640;
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
-            this.scale.forceOrientation(false, true);
+            this.scale.forceOrientation(true, false);
             this.scale.hasResized.add(this.gameResized, this);
             this.scale.enterIncorrectOrientation.add(this.enterIncorrectOrientation, this);
             this.scale.leaveIncorrectOrientation.add(this.leaveIncorrectOrientation, this);

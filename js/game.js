@@ -78,9 +78,6 @@ ShooterGame.Game.prototype = {
         this.emitter.minParticleSpeed = new Phaser.Point(-200, -200);
         this.emitter.maxParticleSpeed = new Phaser.Point(200, 200);
         this.emitter.setAlpha(1, 0, 3000);
-        //this.emitter.autoAlpha = true;
-        //this.emitter.minParticleAlpha = 0;
-        //this.emitter.autoAlpha = true;
 
 
 	},  
