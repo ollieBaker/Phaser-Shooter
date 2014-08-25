@@ -31,6 +31,8 @@ ShooterGame.Game = function (game) {
     this.scoreText;
 
     this.lives;
+
+    this.emitter;
 };
 
 
@@ -69,6 +71,18 @@ ShooterGame.Game.prototype = {
         this.weapon.create();
 
         this.player.create();
+
+        this.emitter = this.game.add.emitter(0, 0, 100);
+        this.emitter.makeParticles('main', 'Effects/star2');
+        this.emitter.gravity = 0;
+        this.emitter.minParticleSpeed = new Phaser.Point(-200, -200);
+        this.emitter.maxParticleSpeed = new Phaser.Point(200, 200);
+        this.emitter.setAlpha(1, 0, 3000);
+        //this.emitter.autoAlpha = true;
+        //this.emitter.minParticleAlpha = 0;
+        //this.emitter.autoAlpha = true;
+
+
 	},  
 
 	update: function () {
@@ -85,8 +99,19 @@ ShooterGame.Game.prototype = {
     onBulletEnemyCollision: function (bullet, enemy) {
         if ( enemy.loseHealth(this.weapon.strength) ) {
             this.addScore();
+                    this.emitter.x = enemy.x;
+        this.emitter.y = enemy.y;
+
+        //  The first parameter sets the effect to "explode" which means all particles are emitted at once
+        //  The second gives each particle a 2000ms lifespan
+        //  The third is ignored when using burst/explode mode
+        //  The final parameter (10) is how many particles will be emitted in this single burst
+        this.emitter.start(true, 2000, null, 10);
         }
         bullet.kill();
+
+
+
     },
 
     onPlayerEnemyCollision: function (player, enemy) {
