@@ -23,19 +23,29 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 
 	ShooterGame.Enemy.prototype.loseHealth =  function( power ) {
 		this.health -= power;
-		if(this.health <= 0) {
-			this.reset();
+		if(this.health <= 0 && this.isAlive == true) {
+			var deathAnim = this.game.add.tween(this);
+			deathAnim.to({alpha: 0}, 75, Phaser.Easing.Linear.None, true, 0, 4, true);
+			console.log('deathAnim');
+			this.isAlive = false;
+			deathAnim.onComplete.add(this.reset, this);
+			//this.reset();
+
+			return true;
 		}
+
+		return false;
 	};
 
 	ShooterGame.Enemy.prototype.reset = function () {
 		this.isAlive = true;
+		this.alpha = 1;
 		this.body.velocity.x = 0;
 		this.body.velocity.y = 0;
 		this.x = this.width * 0.5;
 		this.y = -120;
 		this.count = 0;
-		this.health = 2;
+		this.health = 3;
 	};
 
 	ShooterGame.Enemy.prototype.update = function() {

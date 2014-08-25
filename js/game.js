@@ -26,6 +26,8 @@ ShooterGame.Game = function (game) {
     this.enemies;
     this.weapon;
     this.background;
+    this.score = 0;
+    this.scoreText;
 };
 
 
@@ -39,7 +41,9 @@ ShooterGame.Game.prototype = {
         this.background = new ShooterGame.Background(this.game);
         this.background.create();
 
-        var numEnemies = 1 ;
+        this.scoreText = this.game.add.text(16, 16, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+
+        var numEnemies = 10 ;
         this.enemies = this.game.add.group();
         for (var i = 0; i < numEnemies; i++) {
             this.enemies.add(new ShooterGame.Enemy(this.game, i) );
@@ -65,12 +69,19 @@ ShooterGame.Game.prototype = {
 	}, 
 
     onBulletEnemyCollision: function (bullet, enemy) {
-        enemy.loseHealth(this.weapon.strength);
+        if ( enemy.loseHealth(this.weapon.strength) ) {
+            this.addScore();
+        }
         bullet.kill();
     },
 
     onPlayerEnemyCollision: function (player, enemy) {
         enemy.reset();
+    },
+
+    addScore: function () {
+        this.score += 100;
+        this.scoreText.text = 'score: ' + this.score;
     },
 
 	quitGame: function (pointer) {
@@ -87,7 +98,6 @@ ShooterGame.Game.prototype = {
         this.game.debug.body(this.player.sprite);
 
         this.weapon.bullets.forEachAlive( function (bullet) {
-            console.log("!")
             this.game.debug.body(bullet);
         }, this);
     }
