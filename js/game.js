@@ -84,6 +84,8 @@ ShooterGame.Game.prototype = {
 	},
 
     render: function () {
+        this.game.debug.bodyInfo(this.player, 32, 32);
+        this.game.debug.body(this.player);
     }
 
 };
