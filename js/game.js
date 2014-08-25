@@ -39,8 +39,9 @@ ShooterGame.Game.prototype = {
         this.background = new ShooterGame.Background(this.game);
         this.background.create();
 
+        var numEnemies = 1 ;
         this.enemies = this.game.add.group();
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < numEnemies; i++) {
             this.enemies.add(new ShooterGame.Enemy(this.game, i) );
         };
 
