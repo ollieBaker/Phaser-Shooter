@@ -42,11 +42,11 @@ ShooterGame.Boot.prototype = {
         }
         else
         {            
-            this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;//change??
+            this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;//change??
             this.scale.minWidth = 1136 * 0.5;
             this.scale.minHeight = 640 * 0.5;
-            this.scale.maxWidth = 1136;
-            this.scale.maxHeight = 640;
+            /*this.scale.maxWidth = 1136;
+            this.scale.maxHeight = 640;*/
             this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
             this.scale.forceOrientation(true, false);
