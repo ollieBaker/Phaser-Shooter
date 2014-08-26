@@ -2,6 +2,7 @@ ShooterGame.Player = function (game) {
 	this.game = game;
     this.sprite = null;
     this.lives = 3;
+    this.invincible = false;
 
     this.lastPos = { x:0, y:0 };
     this.nextPos = { x:0, y:0 };
@@ -33,11 +34,14 @@ ShooterGame.Player.prototype = {
 	},
 
     loseLife: function() {
-        this.lives -= 1;
-        if(this.lives < 0) {
-            //die
-            console.log('you dead...');
-        }
+        var deathAnim = this.game.add.tween(this.sprite);
+        deathAnim.to({alpha: 0}, 150, Phaser.Easing.Linear.None, true, 0, 11, true);
+        this.invincible = true;
+        deathAnim.onComplete.add(this.reset, this);
+    },
+
+    reset: function() {
+        this.invincible = false;
     },
 
 	update: function() {

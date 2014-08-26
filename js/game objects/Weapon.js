@@ -19,19 +19,21 @@ ShooterGame.Weapon.prototype = {
 	},
 
 	fire: function () {
-        var bullet = this.bullets.getFirstExists(false);
-        if(bullet) {
-	       	bullet.frameName = "Lasers/laserBlue06"; // random laser + this.game.rnd.between(1,6);
-	       	bullet.angle = 90;
-	       	bullet.anchor.set(0.5, 0.5);
-	        bullet.exists = true;
-	        bullet.reset(this.player.sprite.x - 15, this.player.sprite.y);
-	        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
-	        bullet.body.allowRotation = false;
-	        bullet.body.velocity.x = 600;
-	        bullet.body.width = 30;
-	        bullet.body.height = 10;
-	    }
+		if(this.player.invincible == false) {
+	        var bullet = this.bullets.getFirstExists(false);
+	        if(bullet) {
+		       	bullet.frameName = "Lasers/laserBlue06"; // random laser + this.game.rnd.between(1,6);
+		       	bullet.angle = 90;
+		       	bullet.anchor.set(0.5, 0.5);
+		        bullet.exists = true;
+		        bullet.reset(this.player.sprite.x - 15, this.player.sprite.y);
+		        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
+		        bullet.body.allowRotation = false;
+		        bullet.body.velocity.x = 600;
+		        bullet.body.width = 30;
+		        bullet.body.height = 10;
+		    }
+		}
     },
 
     kill: function () {

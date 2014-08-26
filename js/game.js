@@ -99,24 +99,25 @@ ShooterGame.Game.prototype = {
     onBulletEnemyCollision: function (bullet, enemy) {
         if ( enemy.loseHealth(this.weapon.strength) ) {
             this.addScore();
-                    this.emitter.x = enemy.x;
-        this.emitter.y = enemy.y;
+            this.emitter.x = enemy.x;
+            this.emitter.y = enemy.y;
 
-        //  The first parameter sets the effect to "explode" which means all particles are emitted at once
-        //  The second gives each particle a 2000ms lifespan
-        //  The third is ignored when using burst/explode mode
-        //  The final parameter (10) is how many particles will be emitted in this single burst
-        this.emitter.start(true, 2000, null, 10);
+            //  The first parameter sets the effect to "explode" which means all particles are emitted at once
+            //  The second gives each particle a 2000ms lifespan
+            //  The third is ignored when using burst/explode mode
+            //  The final parameter (10) is how many particles will be emitted in this single burst
+            this.emitter.start(true, 2000, null, 10);
         }
+
         bullet.kill();
-
-
-
     },
 
     onPlayerEnemyCollision: function (player, enemy) {
-        enemy.reset();
-        this.loseLife();
+        if(this.player.invincible == false) {
+            this.player.loseLife();
+            enemy.reset();
+            this.loseLife();
+        }
     },
 
     loseLife: function () {
