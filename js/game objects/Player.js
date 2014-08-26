@@ -6,10 +6,10 @@ ShooterGame.Player = function (game) {
     this.lastPos = { x:0, y:0 };
     this.nextPos = { x:0, y:0 };
 
-    this.moveSprite = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'main');
-    this.moveSprite.anchor.setTo(0.5,0.5);
+    this.moveSprite = { x:this.game.world.centerX, y:this.game.world.centerY }; //this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'main');
+    /*this.moveSprite.anchor.setTo(0.5,0.5);
     this.moveSprite.frameName = "playerShip2_red";
-    this.moveSprite.alpha = 0.1;
+    this.moveSprite.alpha = 0.1;*/
 };
 
 ShooterGame.Player.prototype = {

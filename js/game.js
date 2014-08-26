@@ -147,15 +147,18 @@ ShooterGame.Game.prototype = {
 	},
 
     render: function () {
-        if(this.device.desktop == true) {
-            this.game.scale.startFullScreen();
+        /*if(this.device.desktop == true) {
         
             this.game.debug.body(this.player.sprite);
 
-            this.weapon.bullets.forEachAlive( function (bullet) {
+            /*this.enemies.forEachAlive( function (enemy) {
+                 this.game.debug.body(enemy);
+            }, this);*/
+
+            /*this.weapon.bullets.forEachAlive( function (bullet) {
                 this.game.debug.body(bullet);
             }, this);
-        }
+        }*/
     }
 
 };

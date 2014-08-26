@@ -48,9 +48,13 @@ ShooterGame.MainMenu.prototype = {
 		this.state.start('Game');
 
 		var device  = new Phaser.Device();
-		//if(device.desktop == false) {
+		if(device.desktop == false) {
+
 			this.game.scale.startFullScreen();
-		//}
+			this.scale.pageAlignHorizontally = true;
+            this.scale.pageAlignVertically = true;
+
+		}
 	}
 
 };
