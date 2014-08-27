@@ -1,6 +1,6 @@
-ShooterGame.Enemy = function(game, delay) {
+ShooterGame.Enemy = function(game) {
 
-	Phaser.Sprite.call(this, game, game.world.width + 45, 0, 'main');
+	Phaser.Sprite.call(this, game, 0, 0, 'main');
 	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
     this.anchor.setTo(0.5,0.5);
     this.frameName = "Enemies/enemyGreen5";
@@ -8,9 +8,6 @@ ShooterGame.Enemy = function(game, delay) {
     this.body.allowRotation = false;
 	this.sprite = null;
 	this.Xspeed = -200;
-	//this.delay = delay;
-
-	//this.game.time.events.add(Phaser.Timer.SECOND * delay, this.reset, this);
 
 	game.add.existing(this);
 
@@ -41,11 +38,11 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 	};
 
 	ShooterGame.Enemy.prototype.release = function () {
-		this.reset(this.game.world.width + 40, 0);
+		this.reset(this.game.world.width + (this.width * 0.5), 0);
 		this.alpha = 1;
 		this.body.velocity.x = this.Xspeed;
 		this.body.velocity.y = 0;
-		this.count = 0;
+		this.count = this.game.rnd.integerInRange(-60, 60);
 		this.health = 3;
 	};
 
