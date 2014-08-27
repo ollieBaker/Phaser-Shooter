@@ -7,7 +7,6 @@ ShooterGame.Enemy = function(game, delay) {
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.allowRotation = false;
 	this.sprite = null;
-	this.Yspeed = 0.04;
 	this.Xspeed = -200;
 	//this.delay = delay;
 
@@ -42,9 +41,9 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 	};
 
 	ShooterGame.Enemy.prototype.release = function () {
-		this.reset(this.game.world.width + 40, this.height * 0.5);
+		this.reset(this.game.world.width + 40, 0);
 		this.alpha = 1;
-		this.body.velocity.x = 0;
+		this.body.velocity.x = this.Xspeed;
 		this.body.velocity.y = 0;
 		this.count = 0;
 		this.health = 3;
@@ -52,7 +51,8 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 
 	ShooterGame.Enemy.prototype.update = function() {
 		
-		if(!this.alive) {
+		if(this.alive == false) {
+			console.log('unnessary pdate')
 			return;
 		}
 
@@ -60,9 +60,8 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		var halfHeight = this.height * 0.5;
 		this.y = (verticalBound * Math.sin(this.count * 0.5 * Math.PI / 80)) + (verticalBound + halfHeight);
 
-		this.body.velocity.x = this.Xspeed;
 		this.count ++;
-		if(this.x < 0 - this.height * 0.5) {
+		if(this.x < ( -this.width * 0.5)) {
 			this.kill();
 		}
 	};
