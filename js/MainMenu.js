@@ -25,8 +25,7 @@ ShooterGame.MainMenu.prototype = {
 		this.playButton.anchor.setTo(0.5, 0.5);
 		this.playButton.frameName = 'play_btn';
 
-		//shortcut to game
-
+		this.game.add.tween(this.playButton).from({y: -this.playButton.height}, 1400, Phaser.Easing.Bounce.Out, true);
 
 	},
 

@@ -115,7 +115,13 @@ ShooterGame.Game.prototype = {
     onPlayerEnemyCollision: function (player, enemy) {
         if(this.player.invincible == false) {
             this.player.loseLife();
+
+            this.emitter.x = enemy.x;
+            this.emitter.y = enemy.y;
+            this.emitter.start(true, 2000, null, 10);
+
             enemy.reset();
+
             this.loseLife();
         }
     },
@@ -126,6 +132,10 @@ ShooterGame.Game.prototype = {
         if (live) {
             live.kill();
         } else {
+            this.emitter.x = this.player.sprite.x;
+            this.emitter.y = this.player.sprite.y;
+            this.emitter.start(true, 2000, null, 50);
+
             this.player.sprite.kill();
             this.weapon.kill();
             this.enemies.callAll('kill');
