@@ -62,7 +62,7 @@ ShooterGame.Game.prototype = {
             ship.alpha = 0.4;
         }
 
-        var numEnemies = 1 ;
+        var numEnemies = 10 ;
         this.enemies = this.game.add.group();
         for (var i = 0; i < numEnemies; i++) {
             this.enemies.add(new ShooterGame.Enemy(this.game, i) );

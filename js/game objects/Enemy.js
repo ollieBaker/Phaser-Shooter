@@ -1,6 +1,6 @@
 ShooterGame.Enemy = function(game, delay) {
 
-	Phaser.Sprite.call(this, game, 0, 0, 'main');
+	Phaser.Sprite.call(this, game, game.world.width + 45, 0, 'main');
 	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
     this.anchor.setTo(0.5,0.5);
     this.frameName = "Enemies/enemyGreen5";
