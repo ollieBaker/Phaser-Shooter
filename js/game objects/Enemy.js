@@ -52,7 +52,6 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 	ShooterGame.Enemy.prototype.update = function() {
 		
 		if(this.alive == false) {
-			console.log('unnessary pdate')
 			return;
 		}
 
