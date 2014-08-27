@@ -3,6 +3,7 @@ ShooterGame.MainMenu = function (game) {
 	this.game = game;
 	this.music = null;
 	this.playButton = null;
+	this.count = 0;
 
 };
 
@@ -32,6 +33,10 @@ ShooterGame.MainMenu.prototype = {
 	update: function () {
 
 		//	Do some nice funky main menu effect here
+		var animNum = (0.05 * Math.sin(this.count * 0.5 * Math.PI / 60)) + 1.05 ;
+		this.playButton.scale.setTo( animNum );
+
+		this.count ++;
 
 	},
 
@@ -54,6 +59,11 @@ ShooterGame.MainMenu.prototype = {
             this.scale.pageAlignVertically = true;
 
 		}
+	},
+
+	shutdown: function () {
+		this.playButton.destroy();
+		this.playButton = null;
 	}
 
 };
