@@ -9,13 +9,13 @@ ShooterGame.Enemy = function(game, delay) {
 	this.sprite = null;
 	this.Yspeed = 0.04;
 	this.Xspeed = -200;
-	this.delay = delay;
+	//this.delay = delay;
 
-	this.isAlive = false;
-
-	this.game.time.events.add(Phaser.Timer.SECOND * delay, this.reset, this);
+	//this.game.time.events.add(Phaser.Timer.SECOND * delay, this.reset, this);
 
 	game.add.existing(this);
+
+	this.exists = false;
 
 	this.angle = 90;
 
@@ -25,16 +25,15 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 
 	ShooterGame.Enemy.prototype.loseHealth =  function( power ) {
 		this.health -= power;
-		if(this.health <= 0 && this.isAlive == true) {
+		if(this.health <= 0 && this.alive == true) {
 
 			this.body.velocity.x = 0;
 			this.body.velocity.y = 0;
 
 			var deathAnim = this.game.add.tween(this);
 			deathAnim.to({alpha: 0}, 75, Phaser.Easing.Linear.None, true, 0, 4, true);
-			this.isAlive = false;
-			deathAnim.onComplete.add(this.reset, this);
-			//this.reset();
+			this.alive = false;
+			deathAnim.onComplete.add(this.kill, this);
 
 			return true;
 		}
@@ -42,20 +41,18 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		return false;
 	};
 
-	ShooterGame.Enemy.prototype.reset = function () {
-		this.isAlive = true;
+	ShooterGame.Enemy.prototype.release = function () {
+		this.reset(this.game.world.width + 40, this.height * 0.5);
 		this.alpha = 1;
 		this.body.velocity.x = 0;
 		this.body.velocity.y = 0;
-		this.x = this.game.world.width + 40;
-		this.y = this.height * 0.5;
 		this.count = 0;
 		this.health = 3;
 	};
 
 	ShooterGame.Enemy.prototype.update = function() {
 		
-		if(!this.isAlive) {
+		if(!this.alive) {
 			return;
 		}
 
@@ -66,6 +63,6 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.body.velocity.x = this.Xspeed;
 		this.count ++;
 		if(this.x < 0 - this.height * 0.5) {
-			this.reset();
+			this.kill();
 		}
 	};

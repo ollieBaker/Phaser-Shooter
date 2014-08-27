@@ -25,7 +25,7 @@ ShooterGame.Weapon.prototype = {
 		       	bullet.frameName = "Lasers/laserBlue06"; // random laser + this.game.rnd.between(1,6);
 		       	bullet.angle = 90;
 		       	bullet.anchor.set(0.5, 0.5);
-		        bullet.exists = true;
+		        //bullet.exists = true;
 		        bullet.reset(this.player.sprite.x - 15, this.player.sprite.y);
 		        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
 		        bullet.body.allowRotation = false;

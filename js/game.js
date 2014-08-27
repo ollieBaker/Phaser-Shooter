@@ -82,8 +82,21 @@ ShooterGame.Game.prototype = {
         this.emitter.maxParticleSpeed = new Phaser.Point(200, 200);
         this.emitter.setAlpha(1, 0, 3000);
 
+        this.startGame();
+
 
 	},  
+
+    startGame: function() {
+        this.game.time.events.loop(Phaser.Timer.SECOND, this.releaseEnemy, this);
+    },
+
+    releaseEnemy: function() {
+        var e = this.enemies.getFirstExists(false);
+        // console.log('next enemy', e);
+        e.release();
+        
+    },
 
 	update: function () {
         this.player.update();
@@ -120,7 +133,7 @@ ShooterGame.Game.prototype = {
             this.emitter.y = enemy.y;
             this.emitter.start(true, 2000, null, 10);
 
-            enemy.reset();
+            enemy.kill();
 
             this.loseLife();
         }

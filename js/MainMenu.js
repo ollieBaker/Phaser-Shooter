@@ -37,7 +37,6 @@ ShooterGame.MainMenu.prototype = {
 		this.playButton.scale.setTo( animNum );
 
 		this.count ++;
-
 	},
 
 	startGame: function (pointer) {
