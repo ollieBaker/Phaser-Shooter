@@ -20,6 +20,8 @@ ShooterGame.MainMenu.prototype = {
 		//this.music = this.add.audio('titleMusic');
 		//this.music.play();
 
+		this.background = new ShooterGame.Background(this.game);
+        this.background.create();
 		
 
 		this.playButton = this.add.button(this.game.world.centerX, this.game.world.centerY, 'main', this.startGame, this);
@@ -36,6 +38,8 @@ ShooterGame.MainMenu.prototype = {
 		var animNum = (0.05 * Math.sin(this.count * 0.5 * Math.PI / 60)) + 1.05 ;
 		this.playButton.scale.setTo( animNum );
 
+		this.background.update();
+
 		this.count ++;
 	},
 
@@ -46,9 +50,7 @@ ShooterGame.MainMenu.prototype = {
 
 		//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
 		//this.music.stop();
-		this.playButton.scale = 0.9
 		//	And start the actual game
-		this.state.start('Game');
 
 		var device  = new Phaser.Device();
 		if(device.desktop == false) {
@@ -58,11 +60,16 @@ ShooterGame.MainMenu.prototype = {
             this.scale.pageAlignVertically = true;
 
 		}
+
+		this.state.start('Game');
 	},
 
 	shutdown: function () {
 		this.playButton.destroy();
 		this.playButton = null;
+
+		this.background.destroy();
+		this.background = null;
 	}
 
 };

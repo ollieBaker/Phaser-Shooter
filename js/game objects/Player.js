@@ -11,6 +11,8 @@ ShooterGame.Player = function (game) {
     /*this.moveSprite.anchor.setTo(0.5,0.5);
     this.moveSprite.frameName = "playerShip2_red";
     this.moveSprite.alpha = 0.1;*/
+
+    this.controllable = true;
 };
 
 ShooterGame.Player.prototype = {
@@ -46,52 +48,37 @@ ShooterGame.Player.prototype = {
 
 	update: function() {
 
-		var deadzone = 5;
+		if(this.controllable) {
 
-        //default justPressed duration is 250ms
-        if( this.game.input.activePointer.justPressed(150) == false ) {
+            //default justPressed duration is 250ms
+            if( this.game.input.activePointer.justPressed(150) == false ) {
 
-            this.lastPos = { x:this.moveSprite.x, y:this.moveSprite.y };
+                this.lastPos = { x:this.moveSprite.x, y:this.moveSprite.y };
 
-            var vel = this.sprite.body.velocity;
-            var ap = this.game.input.activePointer;
+                var vel = this.sprite.body.velocity;
+                var ap = this.game.input.activePointer;
 
-            this.moveSprite.x = ap.x;
-            this.moveSprite.y = ap.y;
+                this.moveSprite.x = ap.x;
+                this.moveSprite.y = ap.y;
 
-            this.nextPos = { x:this.moveSprite.x, y:this.moveSprite.y };
+                this.nextPos = { x:this.moveSprite.x, y:this.moveSprite.y };
 
-            if(this.lastPos.x != this.nextPos.x || this.lastPos.y != this.nextPos.y) {
-               // console.log("posChanged", 'x: ', this.nextPos.x - this.lastPos.x, 'y: ',  this.nextPos.y - this.lastPos.y);
+                if(this.lastPos.x != this.nextPos.x || this.lastPos.y != this.nextPos.y) {
+                   // console.log("posChanged", 'x: ', this.nextPos.x - this.lastPos.x, 'y: ',  this.nextPos.y - this.lastPos.y);
 
-                var difX = this.nextPos.x - this.lastPos.x;
-                var difY = this.nextPos.y - this.lastPos.y;
+                    var difX = this.nextPos.x - this.lastPos.x;
+                    var difY = this.nextPos.y - this.lastPos.y;
 
-                this.sprite.body.x += difX;
-                this.sprite.body.y += difY;
+                    this.sprite.body.x += difX;
+                    this.sprite.body.y += difY;
+                }
+            } else {
+                var ap = this.game.input.activePointer;
+
+                this.moveSprite.x = ap.x;
+                this.moveSprite.y = ap.y;
             }
-        } else {
-            var ap = this.game.input.activePointer;
 
-            this.moveSprite.x = ap.x;
-            this.moveSprite.y = ap.y;
         }
-
-
-        /*if(this.game.input.activePointer.x > (this.sprite.x + deadzone)) {
-            //this.sprite.angle = 6;
-            this.game.physics.arcade.moveToPointer(this.sprite, 800);
-        } else if(this.game.input.activePointer.x < (this.sprite.x - deadzone)) {
-            //this.sprite.angle = -6;
-            this.game.physics.arcade.moveToPointer(this.sprite, 800);
-        }
-        else {
-            //this.sprite.angle = 0;
-        }
-
-        if (this.game.input.activePointer.circle.contains(this.sprite.x, this.sprite.y)) {
-            this.sprite.body.velocity.x = 0;
-            this.sprite.body.velocity.y = 0;
-        }*/
 	} 
 };

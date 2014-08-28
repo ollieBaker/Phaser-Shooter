@@ -34,6 +34,8 @@ ShooterGame.Game = function (game) {
     this.lives;
     this.enemyTimer = null;
     this.emitter;
+
+    this.resultText;
 };
 
 
@@ -84,6 +86,8 @@ ShooterGame.Game.prototype = {
 
         this.startGame();
 
+        this.resultText = this.game.make.text(this.game.width*0.5, this.game.height * 0.3, 'Congratulations Your Score is \n'+this.score, { font: "28px Arial", fill: "#ffffff", align: "center" });
+        this.resultText.anchor.setTo(0.5, 0.5);
 
 	},  
 
@@ -100,10 +104,15 @@ ShooterGame.Game.prototype = {
              }
         }
 
+
         this.score = 0;
         this.scoreText.text = 'score: ' + this.score;
         this.weapon.start();
         this.enemyTimer = this.game.time.events.loop(Phaser.Timer.SECOND, this.releaseEnemy, this);
+
+        if(this.resultText){
+            this.game.world.remove(this.resultText);
+        }
     },
 
     releaseEnemy: function() {
@@ -179,6 +188,10 @@ ShooterGame.Game.prototype = {
         this.enemies.callAll('kill');
 
         this.game.time.events.remove(this.enemyTimer);
+
+        this.game.world.add(this.resultText);
+        this.resultText.text = 'Congratulations Your Score is \n'+this.score;
+        
 
         this.game.time.events.add(3000, this.startGame, this);
     },

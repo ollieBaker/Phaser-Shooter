@@ -9,6 +9,11 @@ ShooterGame.Background.prototype = {
 
 	},
 
+	destroy: function() {
+		this.tileSprite.destroy();
+		this.tileSprite = null;
+	},
+
 	update: function() {
 		this.tileSprite.tilePosition.x -= 6;
 	}
