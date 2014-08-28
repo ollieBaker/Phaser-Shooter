@@ -30,7 +30,7 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 			var deathAnim = this.game.add.tween(this);
 			deathAnim.to({alpha: 0}, 75, Phaser.Easing.Linear.None, true, 0, 4, true);
 			this.alive = false;
-			deathAnim.onComplete.add(this.kill, this);
+			deathAnim.onComplete.add(this.clean, this);
 
 			return true;
 		}
@@ -71,6 +71,11 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.fireTimer = this.game.time.events.loop(1500, this.fire, this);
 	};
 
+	ShooterGame.Enemy.prototype.clean = function() {
+		this.game.time.events.remove(this.fireTimer);
+		this.kill();
+	}
+
 	ShooterGame.Enemy.prototype.update = function() {
 		
 		if(this.alive == false) {
@@ -83,7 +88,6 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 
 		this.count ++;
 		if(this.x < ( -this.width * 0.5)) {
-			this.game.time.events.remove(this.fireTimer);
-			this.kill();
+			this.clean();
 		}
 	};

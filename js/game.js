@@ -192,7 +192,7 @@ ShooterGame.Game.prototype = {
             this.emitter.y = enemy.y;
             this.emitter.start(true, 2000, null, 10);
 
-            enemy.kill();
+            enemy.clean();
 
             this.loseLife();
         }
@@ -227,11 +227,11 @@ ShooterGame.Game.prototype = {
         this.emitter.y = this.player.sprite.y;
         this.emitter.start(true, 2000, null, 50);
 
+        this.game.time.events.remove(this.enemyTimer);
         this.player.sprite.kill();
         this.weapon.kill();
-        this.enemies.callAll('kill');
-
-        this.game.time.events.remove(this.enemyTimer);
+        this.enemies.callAll('clean');
+        this.enemieBullets.callAll('kill');
 
         this.game.world.add(this.resultMenu);
 
