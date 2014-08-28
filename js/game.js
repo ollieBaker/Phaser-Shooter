@@ -99,6 +99,13 @@ ShooterGame.Game.prototype = {
 
         this.resultBtn = this.game.make.button(this.game.width*0.5, this.game.height * 0.5, 'restartBtn', this.startGame, this);
         this.resultBtn.anchor.setTo(0.5, 0.5);
+
+        var prevHighScore = null;
+        if(prevHighScore = localStorage.getItem('highScore'))  {
+            this.highScore = prevHighScore;
+            this.highScoreText.text = 'High Score: '+ this.highScore;
+        }
+
 	},  
 
     startGame: function() {
@@ -213,7 +220,9 @@ ShooterGame.Game.prototype = {
 
         if(this.score > this.highScore) {
             this.highScore = this.score;
-            this.highScoreText.text = 'High Score: '+ this.highScore;    
+            this.highScoreText.text = 'High Score: '+ this.highScore;   
+
+            localStorage.setItem('highScore', this.highScore);
         }
         
 
