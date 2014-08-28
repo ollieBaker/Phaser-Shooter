@@ -28,14 +28,18 @@ ShooterGame.Game = function (game) {
     this.weapon;
     this.background;
 
+    this.highScore = 0;
     this.score = 0;
     this.scoreText;
+    this.highScoreText;
 
     this.lives;
     this.enemyTimer = null;
     this.emitter;
 
     this.resultText;
+    this.resultMenu;
+    this.resultBtn;
 };
 
 
@@ -51,7 +55,8 @@ ShooterGame.Game.prototype = {
         this.background = new ShooterGame.Background(this.game);
         this.background.create();
 
-        this.scoreText = this.game.add.text(16, 16, 'score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+        this.scoreText = this.game.add.text(16, 16, 'Score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+        this.highScoreText = this.game.add.text(128, 16, 'High Score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
 
         this.lives = this.game.add.group();
         this.game.add.text(this.game.world.width - 110, 16, 'Lives : ', { font: '20px Arial', fill: '#fff' });
@@ -86,9 +91,14 @@ ShooterGame.Game.prototype = {
 
         this.startGame();
 
-        this.resultText = this.game.make.text(this.game.width*0.5, this.game.height * 0.3, 'Congratulations Your Score is \n'+this.score, { font: "28px Arial", fill: "#ffffff", align: "center" });
+        this.resultText = this.game.make.text(this.game.width*0.5, this.game.height * 0.4, this.score, { font: "28px Arial", fill: "#ffffff", align: "center" });
         this.resultText.anchor.setTo(0.5, 0.5);
 
+        this.resultMenu = this.game.make.sprite(this.game.width*0.5, this.game.height * 0.4, 'menuBg');
+        this.resultMenu.anchor.setTo(0.5, 0.5);
+
+        this.resultBtn = this.game.make.button(this.game.width*0.5, this.game.height * 0.5, 'restartBtn', this.startGame, this);
+        this.resultBtn.anchor.setTo(0.5, 0.5);
 	},  
 
     startGame: function() {
@@ -105,12 +115,18 @@ ShooterGame.Game.prototype = {
         }
 
         this.score = 0;
-        this.scoreText.text = 'score: ' + this.score;
+        this.scoreText.text = 'Score: ' + this.score;
         this.weapon.start();
         this.enemyTimer = this.game.time.events.loop(Phaser.Timer.SECOND, this.releaseEnemy, this);
 
         if(this.resultText){
             this.game.world.remove(this.resultText);
+        }
+        if(this.resultMenu) {
+            this.game.world.remove(this.resultMenu);
+        }
+        if(this.resultBtn) {
+            this.game.world.remove(this.resultBtn);
         }
     },
 
@@ -174,7 +190,7 @@ ShooterGame.Game.prototype = {
 
     addScore: function () {
         this.score += 100;
-        this.scoreText.text = 'score: ' + this.score;
+        this.scoreText.text = 'Score: ' + this.score;
     },
 
     endGame: function () {
@@ -188,11 +204,19 @@ ShooterGame.Game.prototype = {
 
         this.game.time.events.remove(this.enemyTimer);
 
+        this.game.world.add(this.resultMenu);
+
         this.game.world.add(this.resultText);
-        this.resultText.text = 'Congratulations Your Score is \n'+this.score;
+        this.resultText.text = this.score;
+
+        this.game.world.add(this.resultBtn);
+
+        if(this.score > this.highScore) {
+            this.highScore = this.score;
+            this.highScoreText.text = 'High Score: '+ this.highScore;    
+        }
         
 
-        this.game.time.events.add(3000, this.startGame, this);
     },
 
 	quitGame: function (pointer) {

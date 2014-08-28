@@ -30,6 +30,8 @@ ShooterGame.Preloader.prototype = {
 		this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');*/
 
 		this.load.atlasXML('main', 'assets/image/main.png', 'assets/image/main.xml');
+		this.load.image('menuBg', 'assets/image/menu_bg.png');
+		this.load.image('restartBtn', 'assets/image/restart_btn.png');
 
 		//	+ lots of other required assets here
 
