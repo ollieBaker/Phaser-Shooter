@@ -1,6 +1,8 @@
-ShooterGame.Enemy = function(game) {
+ShooterGame.Enemy = function(game, player, bullets) {
 
 	Phaser.Sprite.call(this, game, 0, 0, 'main');
+	this.player = player;
+	this.bullets = bullets;
 	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
     this.anchor.setTo(0.5,0.5);
     this.frameName = "Enemies/enemyGreen5";
@@ -14,7 +16,6 @@ ShooterGame.Enemy = function(game) {
 	this.exists = false;
 
 	this.angle = 90;
-
 };
 ShooterGame.Enemy.prototype = Object.create(Phaser.Sprite.prototype);
 ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
@@ -37,6 +38,24 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		return false;
 	};
 
+	ShooterGame.Enemy.prototype.fire = function () {
+		var bullet = this.bullets.getFirstExists(false);
+	        if(bullet) {
+		       	bullet.frameName = "Lasers/laserRed06"; // random laser + this.game.rnd.between(1,6);
+		       	bullet.angle = 90;
+		       	bullet.anchor.set(0.5, 0.5);
+		        //bullet.exists = true;
+		        bullet.reset(this.x, this.y);
+		        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
+		        bullet.body.allowRotation = false;
+		        bullet.body.width = 30;
+		        bullet.body.height = 10;
+
+		        this.game.physics.arcade.moveToObject(bullet, this.player.sprite, 200);
+		        // bullet.angle = this.game.physics.arcade.angleToXY(this, this.player.sprite.x, this.player.sprite.y);
+		    }
+	};
+
 	ShooterGame.Enemy.prototype.release = function () {
 		this.reset(this.game.world.width + (this.width * 0.5), 0);
 		this.alpha = 1;
@@ -44,6 +63,8 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.body.velocity.y = 0;
 		this.count = this.game.rnd.integerInRange(-60, 60);
 		this.health = 3;
+
+		this.fireTimer = this.game.time.events.loop(1500, this.fire, this);
 	};
 
 	ShooterGame.Enemy.prototype.update = function() {

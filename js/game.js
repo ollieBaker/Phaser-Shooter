@@ -25,6 +25,7 @@ ShooterGame.Game = function (game) {
 
     this.player;
     this.enemies;
+    this.enemieBullets;
     this.weapon;
     this.background;
 
@@ -69,13 +70,16 @@ ShooterGame.Game.prototype = {
             ship.alpha = 0.4;
         }
 
+        this.enemieBullets = this.game.add.group();
+        this.enemieBullets.createMultiple(100, 'main', 0, false);
+
+        this.player = new ShooterGame.Player(this.game);
+
         var numEnemies = 10 ;
         this.enemies = this.game.add.group();
         for (var i = 0; i < numEnemies; i++) {
-            this.enemies.add(new ShooterGame.Enemy(this.game) );
+            this.enemies.add(new ShooterGame.Enemy(this.game, this.player, this.enemieBullets) );
         };
-
-        this.player = new ShooterGame.Player(this.game);
 
         this.weapon = new ShooterGame.Weapon(this.game, this.player);
         this.weapon.create();

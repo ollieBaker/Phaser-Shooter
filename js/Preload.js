@@ -14,9 +14,9 @@ ShooterGame.Preloader.prototype = {
 		//	These are the assets we loaded in Boot.js
 		//	A nice sparkly background and a loading progress bar
 		//this.background = this.add.sprite(0, 0, 'preloaderBackground');
-		this.preloadBar = this.add.sprite(this.game.width/2,this.game.height/2, 'preloaderBar');
-		this.preloadBar.anchor.setTo(0.5, 0.5);
-
+		this.preloadBar = this.add.sprite(0, 0, 'preloaderBar');
+		this.preloadBar.x = this.game.width/2  - this.preloadBar.width/2;
+		this.preloadBar.y = this.game.height/2;
 		//	This sets the preloadBar sprite as a loader sprite.
 		//	What that does is automatically crop the sprite from 0 to full-width
 		//	as the files below are loaded in.
