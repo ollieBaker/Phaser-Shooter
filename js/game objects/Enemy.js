@@ -47,7 +47,7 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 			       	bullet.angle = 90;
 			       	bullet.anchor.set(0.5, 0.5);
 			        //bullet.exists = true;
-			        bullet.reset(this.x, this.y);
+			        bullet.reset(this.x - (this.width*0.5), this.y);
 			        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
 			        bullet.body.allowRotation = false;
 			        bullet.body.width = 30;
@@ -65,7 +65,7 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.body.velocity.x = this.Xspeed;
 		this.body.velocity.y = 0;
 		this.count = this.game.rnd.integerInRange(-60, 60);
-		this.health = 3;
+		this.health = 1;
 
 		console.log('fire timer added')
 		this.fireTimer = this.game.time.events.loop(1500, this.fire, this);
