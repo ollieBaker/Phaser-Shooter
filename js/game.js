@@ -88,6 +88,21 @@ ShooterGame.Game.prototype = {
 	},  
 
     startGame: function() {
+        
+        if(!this.player.sprite.alive) {
+            this.player.sprite.reset(this.game.input.activePointer.x, this.game.input.activePointer.y);
+            this.player.sprite.alpha = 1;
+
+              for (var i = 0; i < 3; i++) {
+                var ship = this.lives.getAt(i);
+                ship.reset(this.game.world.width - 100 + (40 * i), 60);
+             
+             }
+        }
+
+        this.score = 0;
+        this.scoreText.text = 'score: ' + this.score;
+        this.weapon.start();
         this.enemyTimer = this.game.time.events.loop(Phaser.Timer.SECOND, this.releaseEnemy, this);
     },
 
@@ -145,21 +160,27 @@ ShooterGame.Game.prototype = {
         if (live) {
             live.kill();
         } else {
-            this.emitter.x = this.player.sprite.x;
-            this.emitter.y = this.player.sprite.y;
-            this.emitter.start(true, 2000, null, 50);
-
-            this.player.sprite.kill();
-            this.weapon.kill();
-            this.enemies.callAll('kill');
-
-            this.game.time.events.remove(this.enemyTimer);
+            this.endGame();
         }
     },
 
     addScore: function () {
         this.score += 100;
         this.scoreText.text = 'score: ' + this.score;
+    },
+
+    endGame: function () {
+        this.emitter.x = this.player.sprite.x;
+        this.emitter.y = this.player.sprite.y;
+        this.emitter.start(true, 2000, null, 50);
+
+        this.player.sprite.kill();
+        this.weapon.kill();
+        this.enemies.callAll('kill');
+
+        this.game.time.events.remove(this.enemyTimer);
+
+        this.game.time.events.add(3000, this.startGame, this);
     },
 
 	quitGame: function (pointer) {
