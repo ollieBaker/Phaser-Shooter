@@ -39,21 +39,24 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 	};
 
 	ShooterGame.Enemy.prototype.fire = function () {
-		var bullet = this.bullets.getFirstExists(false);
-	        if(bullet) {
-		       	bullet.frameName = "Lasers/laserRed06"; // random laser + this.game.rnd.between(1,6);
-		       	bullet.angle = 90;
-		       	bullet.anchor.set(0.5, 0.5);
-		        //bullet.exists = true;
-		        bullet.reset(this.x, this.y);
-		        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
-		        bullet.body.allowRotation = false;
-		        bullet.body.width = 30;
-		        bullet.body.height = 10;
+		if(this.x > this.player.sprite.x) {
+			var bullet = this.bullets.getFirstExists(false);
+		        if(bullet) {
+			       	bullet.frameName = "Lasers/laserRed08"; // random laser + this.game.rnd.between(1,6);
+			       	bullet.scale.setTo(0.5);
+			       	bullet.angle = 90;
+			       	bullet.anchor.set(0.5, 0.5);
+			        //bullet.exists = true;
+			        bullet.reset(this.x, this.y);
+			        this.game.physics.enable(this.bullets, Phaser.Physics.ARCADE);
+			        bullet.body.allowRotation = false;
+			        bullet.body.width = 30;
+			        bullet.body.height = 10;
 
-		        this.game.physics.arcade.moveToObject(bullet, this.player.sprite, 200);
-		        // bullet.angle = this.game.physics.arcade.angleToXY(this, this.player.sprite.x, this.player.sprite.y);
-		    }
+			        this.game.physics.arcade.moveToObject(bullet, this.player.sprite, 200);
+			        // bullet.angle = this.game.physics.arcade.angleToXY(this, this.player.sprite.x, this.player.sprite.y);
+			    }
+		}
 	};
 
 	ShooterGame.Enemy.prototype.release = function () {
@@ -64,6 +67,7 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.count = this.game.rnd.integerInRange(-60, 60);
 		this.health = 3;
 
+		console.log('fire timer added')
 		this.fireTimer = this.game.time.events.loop(1500, this.fire, this);
 	};
 
@@ -79,6 +83,7 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 
 		this.count ++;
 		if(this.x < ( -this.width * 0.5)) {
+			this.game.time.events.remove(this.fireTimer);
 			this.kill();
 		}
 	};

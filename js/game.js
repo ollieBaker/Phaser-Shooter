@@ -155,9 +155,18 @@ ShooterGame.Game.prototype = {
 
         //check for enemy / weapon / player collisions
         this.game.physics.arcade.overlap(this.weapon.bullets, this.enemies, this.onBulletEnemyCollision, null, this);
+        this.game.physics.arcade.overlap(this.enemieBullets, this.player.sprite, this.onBulletPlayerCollision, null, this);
         this.game.physics.arcade.overlap(this.player.sprite, this.enemies, this.onPlayerEnemyCollision, null, this);
 
+        this.enemieBullets.forEachAlive(this.checkEnemyBulletBounds, this);
+
 	}, 
+
+    checkEnemyBulletBounds: function(bullet) {
+        if(bullet.x < 10 || bullet.y < 10 || bullet.y > this.game.height +10) {
+            bullet.kill();
+        }
+    }, 
 
     onBulletEnemyCollision: function (bullet, enemy) {
         if ( enemy.loseHealth(this.weapon.strength) ) {
@@ -186,6 +195,15 @@ ShooterGame.Game.prototype = {
             enemy.kill();
 
             this.loseLife();
+        }
+    },
+
+    onBulletPlayerCollision: function(player, bullet) {
+        if(this.player.invincible == false) {
+            this.player.loseLife();
+            this.loseLife();
+
+            bullet.kill();
         }
     },
 
