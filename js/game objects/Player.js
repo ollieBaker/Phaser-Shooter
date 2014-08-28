@@ -12,7 +12,7 @@ ShooterGame.Player = function (game) {
     this.moveSprite.frameName = "playerShip2_red";
     this.moveSprite.alpha = 0.1;*/
 
-    this.controllable = true;
+    this.controllable = false;
 };
 
 ShooterGame.Player.prototype = {
@@ -21,7 +21,7 @@ ShooterGame.Player.prototype = {
 	},
 
 	create: function() {
-		this.sprite = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'main');
+		this.sprite = this.game.add.sprite(60, this.game.world.centerY, 'main');
         this.sprite.anchor.setTo(0.5,0.5);
         this.sprite.angle = 90;
         this.sprite.frameName = "playerShip2_red";
@@ -33,6 +33,15 @@ ShooterGame.Player.prototype = {
         this.lastPos.y = this.game.world.centerY;	
         this.sprite.body.collideWorldBounds = true;
         this.lastPos = { x:this.game.input.activePointer.x, y:this.game.input.activePointer.y };
+
+        var ap = this.game.input.activePointer;
+        var introTween = this.game.add.tween(this.moveSprite).to({ x:ap.x, y:ap.y }, 1000, Phaser.Easing.Linear.None, true);
+        var introTween = this.game.add.tween(this.sprite).to({ x:ap.x, y:ap.y }, 1000, Phaser.Easing.Linear.None, true);
+        introTween.onComplete.add(function() {
+            this.moveSprite.x = ap.x;
+            this.moveSprite.y = ap.y;
+            this.controllable = true;
+        },this);
 	},
 
     loseLife: function() {

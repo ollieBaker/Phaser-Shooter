@@ -104,7 +104,6 @@ ShooterGame.Game.prototype = {
              }
         }
 
-
         this.score = 0;
         this.scoreText.text = 'score: ' + this.score;
         this.weapon.start();
