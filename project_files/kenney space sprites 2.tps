@@ -13,7 +13,24 @@
                 <key>scale</key>
                 <double>1</double>
                 <key>extension</key>
+                <string>@4x</string>
+                <key>spriteFilter</key>
                 <string></string>
+                <key>acceptFractionalValues</key>
+                <false/>
+                <key>maxTextureSize</key>
+                <QSize>
+                    <key>width</key>
+                    <int>-1</int>
+                    <key>height</key>
+                    <int>-1</int>
+                </QSize>
+            </struct>
+            <struct type="AutoSDSettings">
+                <key>scale</key>
+                <double>0.5</double>
+                <key>extension</key>
+                <string>@2x</string>
                 <key>spriteFilter</key>
                 <string></string>
                 <key>acceptFractionalValues</key>
@@ -38,7 +55,7 @@
         <key>dataFormat</key>
         <string>sparrow</string>
         <key>textureFileName</key>
-        <filename>../deploy/assets/image/main.png</filename>
+        <filename>../deploy/assets/image/main{v}.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -92,7 +109,7 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
             <false/>
             <key>forceWordAligned</key>
@@ -131,13 +148,13 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../deploy/assets/image/main.xml</filename>
+                <filename>../deploy/assets/image/main{v}.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
         <false/>
         <key>forceIdenticalLayout</key>
-        <false/>
+        <true/>
         <key>outputFormat</key>
         <enum type="SettingsBase::OutputFormat">RGBA8888</enum>
         <key>contentProtection</key>

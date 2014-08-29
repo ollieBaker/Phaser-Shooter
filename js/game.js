@@ -94,8 +94,6 @@ ShooterGame.Game.prototype = {
         this.emitter.maxParticleSpeed = new Phaser.Point(200, 200);
         this.emitter.setAlpha(1, 0, 3000);
 
-        this.startGame();
-
         this.resultText = this.game.make.text(this.game.width*0.5, this.game.height * 0.4, this.score, { font: "28px Arial", fill: "#ffffff", align: "center" });
         this.resultText.anchor.setTo(0.5, 0.5);
 
@@ -130,6 +128,9 @@ ShooterGame.Game.prototype = {
 
         this.starEmitter.start(false, 2500, 5, 0);
 
+        // this.startGame();
+        this.game.time.events.add(2000, this.startGame, this);
+
 	},  
 
     startGame: function() {
@@ -148,7 +149,7 @@ ShooterGame.Game.prototype = {
         this.score = 0;
         this.scoreText.text = 'Score: ' + this.score;
         this.weapon.start();
-        this.enemyTimer = this.game.time.events.loop(Phaser.Timer.SECOND, this.releaseEnemy, this);
+        this.enemyTimer = this.game.time.events.loop(600, this.releaseEnemy, this);
 
         if(this.resultText){
             this.game.world.remove(this.resultText);

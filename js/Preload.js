@@ -29,7 +29,7 @@ ShooterGame.Preloader.prototype = {
 		this.load.audio('titleMusic', ['audio/main_menu.mp3']);
 		this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');*/
 
-		this.load.atlasXML('main', 'assets/image/main.png', 'assets/image/main.xml');
+		this.load.atlasXML('main', 'assets/image/main@2x.png', 'assets/image/main@2x.xml');
 		this.load.image('menuBg', 'assets/image/menu_bg.png');
 		this.load.image('restartBtn', 'assets/image/restart_btn.png');
 
