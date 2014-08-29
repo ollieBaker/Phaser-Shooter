@@ -37,6 +37,7 @@ ShooterGame.Game = function (game) {
     this.lives;
     this.enemyTimer = null;
     this.emitter;
+    this.starEmitter;
 
     this.resultText;
     this.resultMenu;
@@ -109,6 +110,24 @@ ShooterGame.Game.prototype = {
             this.highScore = prevHighScore;
             this.highScoreText.text = 'High Score: '+ this.highScore;
         }
+
+        this.starEmitter = this.game.add.emitter(this.game.world.width, this.game.world.centerY, 400);
+
+        this.starEmitter.height = this.game.world.height;
+        // emitter.angle = 30; // uncomment to set an angle for the rain.
+
+        this.starEmitter.makeParticles('main', 'Effects/star1');
+
+        this.starEmitter.minParticleScale = 0.1;
+        this.starEmitter.maxParticleScale = 0.5;
+
+        this.starEmitter.setXSpeed(-500, -800);
+        this.starEmitter.setYSpeed(0, 0);
+
+        this.starEmitter.minRotation = 0;
+        this.starEmitter.maxRotation = 0;
+
+        this.starEmitter.start(false, 1600, 5, 0);
 
 	},  
 
