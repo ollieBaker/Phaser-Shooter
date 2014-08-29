@@ -75,6 +75,8 @@ ShooterGame.Boot.prototype = {
 
         ShooterGame.orientated = false;
 
+        this.game.paused = true;
+
         document.getElementById('orientation').style.display = 'block';
 
     },
@@ -82,6 +84,8 @@ ShooterGame.Boot.prototype = {
     leaveIncorrectOrientation: function () {
 
         ShooterGame.orientated = true;
+
+        this.game.paused = false;
 
         document.getElementById('orientation').style.display = 'none';
 
