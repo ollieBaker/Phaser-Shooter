@@ -25,7 +25,7 @@ ShooterGame.Game = function (game) {
 
     this.player;
     this.enemies;
-    this.enemieBullets;
+    this.enemyBullets;
     this.weapon;
     this.background;
 
@@ -71,15 +71,15 @@ ShooterGame.Game.prototype = {
             ship.alpha = 0.4;
         }
 
-        this.enemieBullets = this.game.add.group();
-        this.enemieBullets.createMultiple(100, 'main', 0, false);
+        this.enemyBullets = this.game.add.group();
+        this.enemyBullets.createMultiple(100, 'main', 0, false);
 
         this.player = new ShooterGame.Player(this.game);
 
         var numEnemies = 10 ;
         this.enemies = this.game.add.group();
         for (var i = 0; i < numEnemies; i++) {
-            this.enemies.add(new ShooterGame.Enemy(this.game, this.player, this.enemieBullets) );
+            this.enemies.add(new ShooterGame.Enemy(this.game, this.player, this.enemyBullets) );
         };
 
         this.weapon = new ShooterGame.Weapon(this.game, this.player);
@@ -175,10 +175,10 @@ ShooterGame.Game.prototype = {
 
         //check for enemy / weapon / player collisions
         this.game.physics.arcade.overlap(this.weapon.bullets, this.enemies, this.onBulletEnemyCollision, null, this);
-        this.game.physics.arcade.overlap(this.enemieBullets, this.player.sprite, this.onBulletPlayerCollision, null, this);
+        this.game.physics.arcade.overlap(this.enemyBullets, this.player.sprite, this.onBulletPlayerCollision, null, this);
         this.game.physics.arcade.overlap(this.player.sprite, this.enemies, this.onPlayerEnemyCollision, null, this);
 
-        this.enemieBullets.forEachAlive(this.checkEnemyBulletBounds, this);
+        this.enemyBullets.forEachAlive(this.checkEnemyBulletBounds, this);
 
 	}, 
 
@@ -251,7 +251,7 @@ ShooterGame.Game.prototype = {
         this.player.sprite.kill();
         this.weapon.kill();
         this.enemies.callAll('clean');
-        this.enemieBullets.callAll('kill');
+        this.enemyBullets.callAll('kill');
 
         this.game.world.add(this.resultMenu);
 
