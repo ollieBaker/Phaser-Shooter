@@ -1,11 +1,12 @@
-ShooterGame.Enemy = function(game, player, bullets) {
+ShooterGame.Ufo = function(game, player, bullets) {
 
 	Phaser.Sprite.call(this, game, 0, 0, 'main');
 	this.player = player;
 	this.bullets = bullets;
 	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');
     this.anchor.setTo(0.5,0.5);
-    this.frameName = "Enemies/enemyGreen5";
+    var colors = ['Blue', 'Green', 'Red', 'Yellow'];
+    this.frameName = "ufo"+ colors[this.game.rnd.integerInRange(0, 3)];
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.allowRotation = false;
 	this.sprite = null;
@@ -17,10 +18,10 @@ ShooterGame.Enemy = function(game, player, bullets) {
 
 	this.angle = 90;
 };
-ShooterGame.Enemy.prototype = Object.create(Phaser.Sprite.prototype);
-ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
+ShooterGame.Ufo.prototype = Object.create(Phaser.Sprite.prototype);
+ShooterGame.Ufo.prototype.constructor = ShooterGame.Ufo;
 
-	ShooterGame.Enemy.prototype.loseHealth =  function( power ) {
+	ShooterGame.Ufo.prototype.loseHealth =  function( power ) {
 		this.health -= power;
 		if(this.health <= 0 && this.alive == true) {
 
@@ -38,7 +39,7 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		return false;
 	};
 
-	ShooterGame.Enemy.prototype.fire = function () {
+	ShooterGame.Ufo.prototype.fire = function () {
 		if(this.x > this.player.sprite.x) {
 			var bullet = this.bullets.getFirstExists(false);
 		        if(bullet) {
@@ -59,8 +60,8 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		}
 	};
 
-	ShooterGame.Enemy.prototype.release = function () {
-		this.reset(this.game.world.width + (this.width * 0.5), 0);
+	ShooterGame.Ufo.prototype.release = function () {
+		this.reset(this.game.world.width + (this.width * 0.5), this.game.rnd.integerInRange(this.height, this.game.world.height - this.height));
 		this.alpha = 1;
 		this.body.velocity.x = this.Xspeed;
 		this.body.velocity.y = 0;
@@ -70,22 +71,17 @@ ShooterGame.Enemy.prototype.constructor = ShooterGame.Enemy;
 		this.fireTimer = this.game.time.events.loop(1500, this.fire, this);
 	};
 
-	ShooterGame.Enemy.prototype.clean = function() {
+	ShooterGame.Ufo.prototype.clean = function() {
 		this.game.time.events.remove(this.fireTimer);
 		this.kill();
 	}
 
-	ShooterGame.Enemy.prototype.update = function() {
+	ShooterGame.Ufo.prototype.update = function() {
 		
 		if(this.alive == false) {
 			return;
 		}
 
-		var verticalBound  = (this.game.height - this.height) * 0.5;
-		var halfHeight = this.height * 0.5;
-		this.y = (verticalBound * Math.sin(this.count * 0.5 * Math.PI / 80)) + (verticalBound + halfHeight);
-
-		this.count ++;
 		if(this.x < ( -this.width * 0.5)) {
 			this.clean();
 		}
