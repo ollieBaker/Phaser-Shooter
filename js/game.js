@@ -80,6 +80,7 @@ ShooterGame.Game.prototype = {
         this.enemies = this.game.add.group();
         for (var i = 0; i < numEnemies; i++) {
             this.enemies.add(new ShooterGame.Enemy(this.game, this.player, this.enemyBullets) );
+            this.enemies.add(new ShooterGame.Asteroid(this.game, this.player));
         };
 
         this.weapon = new ShooterGame.Weapon(this.game, this.player);
@@ -165,7 +166,9 @@ ShooterGame.Game.prototype = {
     releaseEnemy: function() {
         var e = this.enemies.getFirstExists(false);
         // console.log('next enemy', e);
-        e.release();
+        if(e) {
+            e.release();
+        }
         
     },
 
