@@ -54,7 +54,7 @@ ShooterGame.Ufo.prototype.constructor = ShooterGame.Ufo;
 			        bullet.body.width = 30;
 			        bullet.body.height = 10;
 
-			        this.game.physics.arcade.moveToObject(bullet, this.player.sprite, 200);
+			        this.game.physics.arcade.moveToObject(bullet, this.player.sprite, 250);
 			        // bullet.angle = this.game.physics.arcade.angleToXY(this, this.player.sprite.x, this.player.sprite.y);
 			    }
 		}
@@ -63,12 +63,11 @@ ShooterGame.Ufo.prototype.constructor = ShooterGame.Ufo;
 	ShooterGame.Ufo.prototype.release = function () {
 		this.reset(this.game.world.width + (this.width * 0.5), this.game.rnd.integerInRange(this.height, this.game.world.height - this.height));
 		this.alpha = 1;
-		this.body.velocity.x = this.Xspeed;
-		this.body.velocity.y = 0;
+		this.game.physics.arcade.moveToObject(this, this.player.sprite, 200);
 		this.count = this.game.rnd.integerInRange(-60, 60);
 		this.health = 1;
 
-		this.fireTimer = this.game.time.events.loop(1500, this.fire, this);
+		this.fireTimer = this.game.time.events.loop(2000, this.fire, this);
 	};
 
 	ShooterGame.Ufo.prototype.clean = function() {
