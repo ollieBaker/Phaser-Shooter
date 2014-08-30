@@ -42,6 +42,9 @@ ShooterGame.Game = function (game) {
     this.resultText;
     this.resultMenu;
     this.resultBtn;
+
+    this.sfx;
+    this.music;
 };
 
 
@@ -53,6 +56,20 @@ ShooterGame.Game.prototype = {
         console.log("game");
 
         this.device  = new Phaser.Device();
+
+        this.sfx = this.game.add.audio('sfx');
+
+        var sfxData = JSON.parse(this.game.cache.getText('sfxData'));
+        for (var sprite in sfxData.spritemap) {
+            var start = sfxData.spritemap[sprite].start;
+            var end = sfxData.spritemap[sprite].end;
+            this.sfx.addMarker(sprite, start, end - start);
+            // console.log(sprite, start, end - start);
+        }        
+
+
+        this.music = this.game.add.audio('bgMusic');
+        this.music.play("", 0, 1, true);
 
         this.background = new ShooterGame.Background(this.game);
         this.background.create();
@@ -84,7 +101,7 @@ ShooterGame.Game.prototype = {
             this.enemies.add(new ShooterGame.Asteroid(this.game, this.player));
         };
 
-        this.weapon = new ShooterGame.Weapon(this.game, this.player);
+        this.weapon = new ShooterGame.Weapon(this.game, this.player, this.sfx);
         this.weapon.create();
 
         this.player.create();
@@ -204,6 +221,8 @@ ShooterGame.Game.prototype = {
             //  The third is ignored when using burst/explode mode
             //  The final parameter (10) is how many particles will be emitted in this single burst
             this.emitter.start(true, 2000, null, 10);
+
+            this.sfx.play('Explosion01');
         }
 
         bullet.kill();
@@ -220,6 +239,8 @@ ShooterGame.Game.prototype = {
             enemy.clean();
 
             this.loseLife();
+
+            this.sfx.play('Explosion01');
         }
     },
 
@@ -237,6 +258,7 @@ ShooterGame.Game.prototype = {
 
         if (live) {
             live.kill();
+            this.sfx.play('Hurt01');
         } else {
             this.endGame();
         }
@@ -272,7 +294,7 @@ ShooterGame.Game.prototype = {
             localStorage.setItem('highScore', this.highScore);
         }
         
-
+        this.sfx.play('Gameover01');
     },
 
 	quitGame: function (pointer) {

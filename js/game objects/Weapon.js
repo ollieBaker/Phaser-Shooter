@@ -1,9 +1,10 @@
-ShooterGame.Weapon = function(game, player) {
+ShooterGame.Weapon = function(game, player, sfx) {
 	this.game = game;
 	this.player = player;
 	this.bullets = null;
 	this.strength = 1;
 	this.fireTimer;
+	this.sfx = sfx;
 };
 
 ShooterGame.Weapon.prototype = {
@@ -31,6 +32,7 @@ ShooterGame.Weapon.prototype = {
 		        bullet.body.velocity.x = 600;
 		        bullet.body.width = 30;
 		        bullet.body.height = 10;
+		        this.sfx.play('Laser01', 0, 0.5, false, true);
 		    }
 		}
     },

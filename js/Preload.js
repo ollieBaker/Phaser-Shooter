@@ -33,6 +33,17 @@ ShooterGame.Preloader.prototype = {
 		this.load.image('menuBg', 'assets/image/menu_bg.png');
 		this.load.image('restartBtn', 'assets/image/restart_btn.png');
 
+		/*this.load.audio('laser01', ['assets/sound/Laser01.ogg', 'assets/sound/Laser01.mp3'] );
+		this.load.audio('laser02', ['assets/sound/Laser02.ogg', 'assets/sound/Laser02.mp3'] );
+		this.load.audio('gameover01', ['assets/sound/Gameover01.ogg', 'assets/sound/Gameover01.mp3'] );
+		this.load.audio('hurt01', ['assets/sound/Hurt01.ogg', 'assets/sound/Hurt01.mp3'] );
+		this.load.audio('points01', ['assets/sound/Points01.ogg', 'assets/sound/Points01.mp3'] );
+		this.load.audio('random01', ['assets/sound/Random01.ogg', 'assets/sound/Random01.mp3'] ) ;
+		this.load.audio('explosion01', ['assets/sound/Explosion01.ogg', 'assets/sound/Explosion01.mp3'] );*/
+		this.load.audio('bgMusic', ['assets/sound/loop3.ogg', 'assets/sound/loop3.mp3']);
+		this.load.audio('sfx', ['assets/sound/sfx.ogg', 'assets/sound/sfx.mp3'] );
+		this.load.text('sfxData', 'assets/sound/sfx.json');
+
 		//	+ lots of other required assets here
 
 	},
@@ -42,7 +53,7 @@ ShooterGame.Preloader.prototype = {
 		//	Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes
 		this.preloadBar.cropEnabled = false;
 
-		this.state.start('MainMenu');
+		// this.state.start('MainMenu');
 
 	},
 
@@ -57,11 +68,11 @@ ShooterGame.Preloader.prototype = {
 		//	If you don't have any music in your game then put the game.state.start line into the create function and delete
 		//	the update function completely.
 
-		/*if (this.cache.isSoundDecoded('titleMusic') && this.ready == false)
+		if (this.cache.isSoundDecoded('bgMusic') && this.ready == false)
 		{
 			this.ready = true;
 			this.state.start('MainMenu');
-		}*/
+		}
 
 	}
 
