@@ -13,6 +13,27 @@ ShooterGame.MainMenu.prototype = {
 
 		console.log("main menu");
 
+		transitionPlugin = this.game.plugins.add(Phaser.Plugin.StateTransition);
+
+//define new properties to be tweened, duration, even ease
+transitionPlugin.settings({
+
+    //how long the animation should take
+    duration: 1000,
+
+    //ease property
+    ease: Phaser.Easing.Exponential.InOut, /* default ease */
+
+    //what property should be tweened
+    properties: {
+        alpha: 0,
+        scale: {
+            x: 1.5,
+            y: 1.5
+        }
+    }
+});
+
 		//	We've already preloaded our assets, so let's kick right into the Main Menu itself.
 		//	Here all we're doing is playing some music and adding a picture and button
 		//	Naturally I expect you to do something significantly better :)
@@ -61,7 +82,7 @@ ShooterGame.MainMenu.prototype = {
 
 		}
 
-		this.state.start('Game');
+		transitionPlugin.to('Game');
 	},
 
 	shutdown: function () {

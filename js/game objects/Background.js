@@ -35,6 +35,6 @@ ShooterGame.Background.prototype = {
 	},
 
 	update: function() {
-		this.tileSprite.tilePosition.x -= 6;
+		// this.tileSprite.tilePosition.x -= 6;
 	}
 };
