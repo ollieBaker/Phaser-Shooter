@@ -66,10 +66,7 @@ ShooterGame.Game.prototype = {
             this.sfx.addMarker(sprite, start, end - start);
             // console.log(sprite, start, end - start);
         }        
-
-
         this.music = this.game.add.audio('bgMusic');
-        this.music.play("", 0, 1, true);
 
         this.background = new ShooterGame.Background(this.game);
         this.background.create();
@@ -153,6 +150,8 @@ ShooterGame.Game.prototype = {
 	},  
 
     startGame: function() {
+
+        this.music.play("", 0, 1, true);
         
         if(!this.player.sprite.alive) {
             this.player.sprite.reset(this.game.input.activePointer.x, this.game.input.activePointer.y);
@@ -295,6 +294,8 @@ ShooterGame.Game.prototype = {
         }
         
         this.sfx.play('Gameover01');
+
+        this.music.stop();
     },
 
 	quitGame: function (pointer) {

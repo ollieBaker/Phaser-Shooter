@@ -27,7 +27,7 @@ ShooterGame.Boot.prototype = {
     create: function () {
 
         this.input.maxPointers = 1;
-        this.stage.disableVisibilityChange = true;
+        // this.stage.disableVisibilityChange = true;
         //console.log(this.game.width, this.game.height)
         var defWidth = this.game.width;
         var defHeight = this.game.height;
