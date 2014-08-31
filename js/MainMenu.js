@@ -79,10 +79,15 @@ transitionPlugin.settings({
 			this.game.scale.startFullScreen();
 			this.scale.pageAlignHorizontally = true;
             this.scale.pageAlignVertically = true;
-
+            //wait for a 1 second to allow fullscreen change.
+            this.game.time.events.add(1000, function() {
+				transitionPlugin.to('Game');
+            }, this);
+		}
+		else {
+			transitionPlugin.to('Game');
 		}
 
-		transitionPlugin.to('Game');
 	},
 
 	shutdown: function () {

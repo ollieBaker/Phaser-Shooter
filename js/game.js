@@ -44,6 +44,8 @@ ShooterGame.Game = function (game) {
 
     this.sfx;
     this.music;
+
+    this.shakeWorld;
 };
 
 
@@ -183,7 +185,21 @@ ShooterGame.Game.prototype = {
 
         this.enemyBullets.forEachAlive(this.checkEnemyBulletBounds, this);
 
+        this.doShake();
 	}, 
+
+    doShake: function () {
+          if (this.shakeWorld > 0) {
+            console.log('shake');
+            var rand1 = this.game.rnd.integerInRange(-10,10);
+            var rand2 = this.game.rnd.integerInRange(-10,10);
+            this.game.world.setBounds(rand1, rand2, this.game.width + rand1, this.game.height + rand2);
+            this.shakeWorld--;
+            if (this.shakeWorld == 0) {
+                this.game.world.setBounds(0, 0, this.game.width, this.game.height); // normalize after shake?
+            }
+        }
+    },
 
     checkEnemyBulletBounds: function(bullet) {
         if(bullet.x < 10 || bullet.y < 10 || bullet.y > this.game.height +10) {
@@ -240,6 +256,7 @@ ShooterGame.Game.prototype = {
         if (live) {
             live.kill();
             this.sfx.play('Hurt01');
+            this.shakeWorld = 20;
         } else {
             this.endGame();
         }
@@ -278,6 +295,8 @@ ShooterGame.Game.prototype = {
         this.sfx.play('Gameover01');
 
         this.music.stop();
+
+        this.shakeWorld = 40;
     },
 
 	quitGame: function (pointer) {
