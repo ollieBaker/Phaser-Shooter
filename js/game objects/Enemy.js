@@ -1,6 +1,6 @@
 ShooterGame.Enemy = function(game, player, bullets) {
 
-	Phaser.Sprite.call(this, game, 0, 0, 'main');
+	Phaser.Sprite.call(this, game, -20, -20, 'main');
 	this.player = player;
 	this.bullets = bullets;
 	//this.sprite = this.game.add.sprite(this.game.world.centerX, -60, 'main');

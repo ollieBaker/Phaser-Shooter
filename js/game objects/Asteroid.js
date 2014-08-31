@@ -1,6 +1,6 @@
 ShooterGame.Asteroid = function(game, player) {
 
-	Phaser.Sprite.call(this, game, 0, 0, 'main');
+	Phaser.Sprite.call(this, game, -20, -20, 'main');
 	this.player = player;
 
     this.anchor.setTo(0.5,0.5);

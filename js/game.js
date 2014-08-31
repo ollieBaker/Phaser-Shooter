@@ -35,6 +35,7 @@ ShooterGame.Game = function (game) {
     this.highScoreText;
 
     this.lives;
+    this.bombs;
     this.enemyTimer = null;
     this.emitter;
 
@@ -46,6 +47,8 @@ ShooterGame.Game = function (game) {
     this.music;
 
     this.shakeWorld;
+
+    this.lastTapTime = 0;
 };
 
 
@@ -55,6 +58,8 @@ ShooterGame.Game.prototype = {
 	create: function () {
 
         console.log("game");
+
+        this.lastTapTime = this.game.input.activePointer.previousTapTime;
 
         this.device  = new Phaser.Device();
 
@@ -73,7 +78,7 @@ ShooterGame.Game.prototype = {
         this.background.create();
 
         this.scoreText = this.game.add.text(16, 16, 'Score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
-        this.highScoreText = this.game.add.text(128, 16, 'High Score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
+        this.highScoreText = this.game.add.text(192, 16, 'High Score: 0', { font: "20px Arial", fill: "#ffffff", align: "left" });
 
         this.lives = this.game.add.group();
         this.game.add.text(this.game.world.width - 110, 16, 'Lives : ', { font: '20px Arial', fill: '#fff' });
@@ -83,7 +88,17 @@ ShooterGame.Game.prototype = {
             ship.frameName = 'UI/playerLife1_red';
             ship.anchor.setTo(0.5, 0.5);
             ship.angle = 90;
-            ship.alpha = 0.4;
+            ship.alpha = 0.7;
+        }
+
+        this.bombs = this.game.add.group();
+        this.game.add.text(this.game.world.width - 310, 16, 'Bombs : ', { font: '20px Arial', fill: '#fff' });
+        for (var i = 0; i < 3; i++) {
+            var bomb = this.bombs.create(this.game.world.width - 300 + (40 * i), 60, 'main');
+            bomb.frameName = 'Power-ups/bolt_gold';
+            bomb.anchor.setTo(0.5, 0.5);
+            bomb.angle = 0;
+            bomb.alpha = 0.7;
         }
 
         this.enemyBullets = this.game.add.group();
@@ -185,20 +200,41 @@ ShooterGame.Game.prototype = {
 
         this.enemyBullets.forEachAlive(this.checkEnemyBulletBounds, this);
 
-        this.doShake();
-	}, 
+        var bTime = this.game.input.activePointer.previousTapTime - this.lastTapTime;
+        this.lastTapTime = this.game.input.activePointer.previousTapTime;
+        
+        if( (bTime < 200 && bTime > 0)) {
+            this.dropBomb();
+        }
+
+        if (this.shakeWorld > 0) {
+            this.doShake();
+        }
+	},
+
+    dropBomb: function() {
+        var bomb = this.bombs.getFirstAlive();
+
+        if (bomb) {
+            bomb.kill();
+            this.shakeWorld = 20;
+            this.enemies.forEachAlive( function(enemy) {
+                if(enemy.inCamera == true && enemy.x > 20) {
+                    this.killEnemy(enemy);
+                }
+            }, this);
+        }
+    },
 
     doShake: function () {
-          if (this.shakeWorld > 0) {
-            console.log('shake');
-            var rand1 = this.game.rnd.integerInRange(-10,10);
-            var rand2 = this.game.rnd.integerInRange(-10,10);
-            this.game.world.setBounds(rand1, rand2, this.game.width + rand1, this.game.height + rand2);
-            this.shakeWorld--;
-            if (this.shakeWorld == 0) {
-                this.game.world.setBounds(0, 0, this.game.width, this.game.height); // normalize after shake?
-            }
-        }
+        // console.log('shake');
+        var rand1 = this.game.rnd.integerInRange(-10,10);
+        var rand2 = this.game.rnd.integerInRange(-10,10);
+        this.game.world.setBounds(rand1, rand2, this.game.width + rand1, this.game.height + rand2);
+        this.shakeWorld--;
+        if (this.shakeWorld == 0) {
+            this.game.world.setBounds(0, 0, this.game.width, this.game.height); // normalize after shake?
+        }    
     },
 
     checkEnemyBulletBounds: function(bullet) {
@@ -212,17 +248,29 @@ ShooterGame.Game.prototype = {
             this.addScore();
             this.emitter.x = enemy.x;
             this.emitter.y = enemy.y;
-
-            //  The first parameter sets the effect to "explode" which means all particles are emitted at once
-            //  The second gives each particle a 2000ms lifespan
-            //  The third is ignored when using burst/explode mode
-            //  The final parameter (10) is how many particles will be emitted in this single burst
             this.emitter.start(true, 2000, null, 10);
-
             this.sfx.play('Explosion01');
         }
 
         bullet.kill();
+    },
+
+    killEnemy: function(enemy) {
+        enemy.loseHealth(99);
+        this.addScore();
+        this.emitter.x = enemy.x;
+        this.emitter.y = enemy.y;
+        this.emitter.start(true, 2000, null, 10);
+        this.sfx.play('Explosion01');
+
+        var explosion = enemy.game.add.sprite(enemy.x, enemy.y, 'main');
+        explosion.frameName = 'Effects/star3';
+        explosion.anchor.setTo(0.5, 0.5);
+        enemy.game.add.tween(explosion).to({alpha:0}, 500, Phaser.Easing.Linear.None, true);
+        var exTween = enemy.game.add.tween(explosion.scale).to({x:15, y:15}, 500, Phaser.Easing.Linear.None, true);
+        exTween.onComplete.add(function(){
+            explosion.destroy();
+        }, this);
     },
 
     onPlayerEnemyCollision: function (player, enemy) {

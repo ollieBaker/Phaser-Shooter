@@ -100,6 +100,17 @@ module.exports = function(grunt){
                     hostname:'0.0.0.0'
                 }
             }
+        },
+
+        compress: {
+          main: {
+            options: {
+              archive: 'deploy/sg.zip'
+            },
+            files: [
+              { expand:true, src: ['**/*', '!**.zip',], cwd: 'deploy/'}
+            ]
+          }
         }
 
     });
@@ -107,5 +118,5 @@ module.exports = function(grunt){
     grunt.registerTask('default',   ['connect', 'watch']);
     grunt.registerTask('buildcss',  ['sass', 'cssc', 'cssmin']);
     grunt.registerTask('buildjs',  ['concat']);//removed 'uglify' for easier debugging
-    grunt.registerTask('deploy', 'ftp-deploy')
+    grunt.registerTask('deploy', ['uglify', 'compress', 'ftp-deploy']);
 };
