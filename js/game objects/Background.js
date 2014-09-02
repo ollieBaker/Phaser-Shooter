@@ -1,12 +1,12 @@
 ShooterGame.Background = function(game) {
 	this.game = game;
-	this.tileSprite = null;
+	// this.tileSprite = null;
 	this.starEmitter = null;
 };
 
 ShooterGame.Background.prototype = {
 	create: function() {
-		this.tileSprite = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'main', 'Backgrounds/blackSmall');
+		//this.tileSprite = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'main', 'Backgrounds/black');
 
 		this.starEmitter = this.game.add.emitter(this.game.world.width, this.game.world.centerY, 300);
         this.starEmitter.gravity = 0;
@@ -28,8 +28,8 @@ ShooterGame.Background.prototype = {
 	},
 
 	destroy: function() {
-		this.tileSprite.destroy();
-		this.tileSprite = null;
+		//this.tileSprite.destroy();
+		//this.tileSprite = null;
 		this.starEmitter.destroy();
 		this.starEmitter = null;
 	},

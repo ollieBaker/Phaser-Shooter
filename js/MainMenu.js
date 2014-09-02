@@ -56,7 +56,7 @@ transitionPlugin.settings({
 	update: function () {
 
 		//	Do some nice funky main menu effect here
-		var animNum = (0.05 * Math.sin(this.count * 0.5 * Math.PI / 60)) + 1.05 ;
+		var animNum = (0.05 * Math.sin(this.count * 0.5 * Math.PI / 60)) + 1.5 ;
 		this.playButton.scale.setTo( animNum );
 
 		this.background.update();

@@ -32,7 +32,7 @@ ShooterGame.Weapon.prototype = {
 		        bullet.body.velocity.x = 600;
 		        bullet.body.width = 30;
 		        bullet.body.height = 10;
-		        this.sfx.play('Laser01', 0, 0.5, false, true);
+		        this.sfx.play('Laser01');
 		    }
 		}
     },

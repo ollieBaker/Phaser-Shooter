@@ -69,7 +69,7 @@ ShooterGame.Game.prototype = {
         for (var sprite in sfxData.spritemap) {
             var start = sfxData.spritemap[sprite].start;
             var end = sfxData.spritemap[sprite].end;
-            this.sfx.addMarker(sprite, start, end - start);
+            this.sfx.addMarker(sprite, start, end - start, 0.3);
             // console.log(sprite, start, end - start);
         }        
         this.music = this.game.add.audio('bgMusic');
@@ -132,7 +132,7 @@ ShooterGame.Game.prototype = {
         this.resultMenu = this.game.make.sprite(this.game.width*0.5, this.game.height * 0.4, 'menuBg');
         this.resultMenu.anchor.setTo(0.5, 0.5);
 
-        this.resultBtn = this.game.make.button(this.game.width*0.5, this.game.height * 0.5, 'restartBtn', this.startGame, this);
+        this.resultBtn = this.game.make.button(this.game.width*0.5, this.game.height * 0.55, 'restartBtn', this.startGame, this);
         this.resultBtn.anchor.setTo(0.5, 0.5);
 
         var prevHighScore = null;
@@ -264,10 +264,10 @@ ShooterGame.Game.prototype = {
         this.sfx.play('Explosion01');
 
         var explosion = enemy.game.add.sprite(enemy.x, enemy.y, 'main');
-        explosion.frameName = 'Effects/star3';
+        explosion.frameName = 'Explosion/explosion01';
         explosion.anchor.setTo(0.5, 0.5);
         enemy.game.add.tween(explosion).to({alpha:0}, 500, Phaser.Easing.Linear.None, true);
-        var exTween = enemy.game.add.tween(explosion.scale).to({x:15, y:15}, 500, Phaser.Easing.Linear.None, true);
+        var exTween = enemy.game.add.tween(explosion.scale).to({x:10, y:10}, 500, Phaser.Easing.Linear.None, true);
         exTween.onComplete.add(function(){
             explosion.destroy();
         }, this);
