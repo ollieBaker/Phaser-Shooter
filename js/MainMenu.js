@@ -4,7 +4,8 @@ ShooterGame.MainMenu = function (game) {
 	this.music = null;
 	this.playButton = null;
 	this.count = 0;
-
+	this.resultText;
+	this.device;
 };
 
 ShooterGame.MainMenu.prototype = {
@@ -44,13 +45,22 @@ transitionPlugin.settings({
 		this.background = new ShooterGame.Background(this.game);
         this.background.create();
 		
+		this.device  = new Phaser.Device();
 
-		this.playButton = this.add.button(this.game.world.centerX, this.game.world.centerY, 'main', this.startGame, this);
+		this.playButton = this.add.button(this.game.world.centerX, this.game.world.centerY - 50, 'main', this.startGame, this);
 		this.playButton.anchor.setTo(0.5, 0.5);
 		this.playButton.frameName = 'play_btn';
 
 		this.game.add.tween(this.playButton).from({y: -this.playButton.height}, 1400, Phaser.Easing.Bounce.Out, true);
 
+		var instructions = "";
+		if(this.device.desktop == true) {
+			instructions = 'Use your mouse to manoeuvre \n\n Double click to unleash a bomb.';
+    	} else {
+    		instructions = "Use your finger to manoeuvre \n\n Double tap to unleash a bomb";
+    	}
+    	this.resultText = this.game.add.text(this.game.width*0.5, this.game.height * 0.7, instructions, { font: "28px Arial", fill: "#ffffff", align: "center" });
+        this.resultText.anchor.setTo(0.5, 0.5);
 	},
 
 	update: function () {
@@ -73,8 +83,8 @@ transitionPlugin.settings({
 		//this.music.stop();
 		//	And start the actual game
 
-		var device  = new Phaser.Device();
-		if(device.desktop == false) {
+		
+		if(this.device.desktop == false) {
 
 			this.game.scale.startFullScreen();
 			this.scale.pageAlignHorizontally = true;
@@ -96,6 +106,8 @@ transitionPlugin.settings({
 
 		this.background.destroy();
 		this.background = null;
+
+		this.device = null;
 	}
 
 };
